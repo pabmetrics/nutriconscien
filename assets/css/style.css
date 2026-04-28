@@ -482,6 +482,8 @@ ul { list-style: none; }
   background: var(--color-black);
   color: var(--color-white);
 }
+.lsection .newsletter__title { color: var(--color-black); }
+.lsection .newsletter__content p { color: var(--color-text-muted); }
 
 .newsletter__inner {
   display: flex;

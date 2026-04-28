@@ -25,6 +25,7 @@
 .lhero--v1 { background: var(--color-bg); }
 .lhero--v2 { background: var(--color-black); color: var(--color-white); }
 .lhero--v3 { background: var(--color-bg-alt); }
+.lhero--light { background: var(--color-bg); }
 
 .lhero__inner {
   display: grid;
@@ -149,6 +150,13 @@
 }
 .lpains-conclusion strong { color: var(--color-accent); }
 
+.lpains-conclusion--light {
+  background: var(--color-white);
+  color: var(--color-black);
+  border: 2px solid var(--color-border);
+}
+.lpains-conclusion--light strong { color: var(--color-black); }
+
 /* ===== V2 COMPARE ===== */
 .lcompare {
   display: grid;
@@ -170,6 +178,13 @@
   color: var(--color-white);
   border: 2px solid var(--color-black);
 }
+.lcompare__col--good-light {
+  background: var(--color-bg-alt);
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+}
+.lcompare__col--good-light h3 { color: var(--color-black); }
+.lcompare__col--good-light li { color: var(--color-text); }
 .lcompare__col h3 {
   font-family: var(--font-display);
   font-size: 1.1rem;

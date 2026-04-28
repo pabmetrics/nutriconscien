@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nutriconscien – Nutrición Personalizada Online</title>
+  <title>Nutriconscien – Planes Nutricionales Personalizados Online</title>
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/landing.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -13,7 +12,7 @@
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- HEADER / NAV -->
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="index.html" class="logo">
@@ -22,22 +21,36 @@
       <nav class="nav" id="nav">
         <ul class="nav__list">
           <li><a href="#inicio" class="nav__link">Inicio</a></li>
+          <li><a href="#servicios" class="nav__link">Servicios</a></li>
+          <li><a href="#planes" class="nav__link">Planes</a></li>
           <li><a href="blog.html" class="nav__link">Blog</a></li>
+          <li><a href="#contacto" class="nav__link">Contacto</a></li>
         </ul>
       </nav>
-      <a href="https://calendar.google.com" target="_blank" class="btn btn--primary header__cta">Reservar cita</a>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <a href="https://calendar.google.com" target="_blank" class="btn btn--primary header__cta">
+        Reservar primera cita
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="lhero lhero--light" id="inicio">
-    <div class="container lhero__inner">
-      <div class="lhero__content">
-        <div class="ltag">¿Te suena esto?</div>
-        <h1 class="lhero__title">Llevas años a dieta y sigues en el mismo sitio.</h1>
-        <p class="lhero__sub">No es tu fuerza de voluntad. No eres tú el problema. El problema son las dietas genéricas que no tienen en cuenta cómo es tu vida de verdad.</p>
-        <a href="#problema" class="btn btn--primary">Quiero entender por qué</a>
+  <section class="hero" id="inicio">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Nutricionista Online</p>
+        <h1 class="hero__title">Mejora tu Bienestar con Planes Nutricionales Personalizados Online</h1>
+        <p class="hero__subtitle">
+          Soy Ana del Pozo, graduada en Nutrición Humana y Dietética por la Universidad Complutense de Madrid
+          con Máster en Nutrición Clínica y Endocrinología. Más de 5 años de experiencia online transformando
+          vidas a través de estrategias nutricionales personalizadas.
+        </p>
+        <div class="hero__actions">
+          <a href="https://calendar.google.com" target="_blank" class="btn btn--primary">Reservar primera cita</a>
+          <a href="#servicios" class="btn btn--outline">Ver servicios</a>
+        </div>
       </div>
       <div class="hero__image">
         <div class="hero__img-wrapper">
@@ -47,117 +60,111 @@
     </div>
   </section>
 
-  <!-- PROBLEMA -->
-  <section class="lsection lsection--alt" id="problema">
+  <!-- SERVICES -->
+  <section class="services" id="servicios">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">El patrón que se repite</p>
-        <h2 class="section-title">¿Cuántas veces has vivido esto?</h2>
+        <p class="section-eyebrow">Lo que ofrezco</p>
+        <h2 class="section-title">Servicios de Nutrición</h2>
       </div>
-      <div class="lpains">
-        <div class="lpain">
-          <span class="lpain__icon">😤</span>
-          <div>
-            <h3>Empiezas una dieta con motivación</h3>
-            <p>La primera semana va bien. Te pesas, ves resultados, te ilusionas.</p>
-          </div>
+      <div class="services__grid">
+        <div class="service-card">
+          <div class="service-card__icon">🥗</div>
+          <h3 class="service-card__title">Planes Nutricionales Personalizados</h3>
+          <p class="service-card__text">
+            Diseño un plan nutricional adaptado a tus objetivos, estilo de vida y preferencias alimentarias.
+          </p>
+          <a href="#planes" class="btn btn--ghost">Ver más</a>
         </div>
-        <div class="lpain lpain--arrow">↓</div>
-        <div class="lpain">
-          <span class="lpain__icon">😰</span>
-          <div>
-            <h3>Aparece la vida real</h3>
-            <p>Una cena con amigos, un viaje de trabajo, un día de estrés. Y la dieta se rompe.</p>
-          </div>
+        <div class="service-card">
+          <div class="service-card__icon">📊</div>
+          <h3 class="service-card__title">Control de Peso y Bienestar</h3>
+          <p class="service-card__text">
+            Seguimiento continuo con herramientas de tracking para alcanzar y mantener tu peso ideal de forma saludable.
+          </p>
+          <a href="#planes" class="btn btn--ghost">Ver más</a>
         </div>
-        <div class="lpain lpain--arrow">↓</div>
-        <div class="lpain">
-          <span class="lpain__icon">😔</span>
-          <div>
-            <h3>Sientes que has fallado</h3>
-            <p>El plan no contemplaba que tienes una vida. Y tú te culpas por ello.</p>
-          </div>
+        <div class="service-card">
+          <div class="service-card__icon">📚</div>
+          <h3 class="service-card__title">Educación Nutricional</h3>
+          <p class="service-card__text">
+            Aprende a comer de forma consciente y sostenible con hábitos que puedes mantener de por vida.
+          </p>
+          <a href="#planes" class="btn btn--ghost">Ver más</a>
         </div>
-        <div class="lpain lpain--arrow">↓</div>
-        <div class="lpain">
-          <span class="lpain__icon">🔁</span>
-          <div>
-            <h3>Efecto rebote y vuelta a empezar</h3>
-            <p>Recuperas el peso perdido, y a veces algo más. El ciclo se repite.</p>
-          </div>
-        </div>
-      </div>
-      <div class="lpains-conclusion lpains-conclusion--light">
-        <p><strong>El problema no eres tú.</strong> Es que nadie te ha dado un plan que se adapte a tu vida, en lugar de pedirte que tú te adaptes al plan.</p>
       </div>
     </div>
   </section>
 
-  <!-- SOLUCIÓN -->
-  <section class="lsection" id="solucion">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow">La diferencia</p>
-        <h2 class="section-title">Un plan que encaja contigo, no al revés</h2>
+  <!-- ABOUT -->
+  <section class="about" id="sobre-mi">
+    <div class="container about__inner">
+      <div class="about__image">
+        <img src="assets/images/ana-about.jpeg" alt="Ana del Pozo" />
       </div>
-      <div class="lcompare">
-        <div class="lcompare__col lcompare__col--bad">
-          <h3>Dietas genéricas</h3>
-          <ul>
-            <li>✗ Iguales para todo el mundo</li>
-            <li>✗ Alimentos que no te gustan</li>
-            <li>✗ Imposibles de mantener</li>
-            <li>✗ Sin apoyo cuando lo necesitas</li>
-            <li>✗ Te sientes sola en el proceso</li>
-            <li>✗ Resultado temporal</li>
-          </ul>
-        </div>
-        <div class="lcompare__col lcompare__col--good lcompare__col--good-light">
-          <h3>Nutriconscien</h3>
-          <ul>
-            <li>✓ Diseñado para ti y tu estilo de vida</li>
-            <li>✓ Con tus alimentos favoritos</li>
-            <li>✓ Sostenible a largo plazo</li>
-            <li>✓ Soporte por Telegram siempre</li>
-            <li>✓ Seguimiento continuo</li>
-            <li>✓ Resultado definitivo</li>
-          </ul>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:48px;">
-        <a href="https://calendar.google.com" target="_blank" class="btn btn--primary">Quiero mi plan personalizado</a>
+      <div class="about__content">
+        <p class="section-eyebrow">Sobre mí</p>
+        <h2 class="section-title">Ana del Pozo</h2>
+        <p>
+          Soy nutricionista graduada por la Universidad Complutense de Madrid con Máster en Nutrición Clínica
+          y Endocrinología. Con más de 5 años de experiencia online, mi misión es transformar vidas a través
+          de estrategias nutricionales personalizadas y basadas en datos.
+        </p>
+        <p>
+          Trabajo contigo de forma cercana, flexible y completamente online para que puedas alcanzar tus
+          objetivos desde cualquier lugar, adaptando cada plan a tu realidad y estilo de vida.
+        </p>
+        <a href="https://calendar.google.com" target="_blank" class="btn btn--primary">Comienza hoy</a>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIOS -->
-  <section class="lsection lsection--alt" id="testimonios">
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonios">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">Historias reales</p>
-        <h2 class="section-title">Ellas también pensaban que era imposible</h2>
+        <p class="section-eyebrow">Opiniones</p>
+        <h2 class="section-title">Lo que dicen mis pacientes</h2>
       </div>
       <div class="testimonials__grid">
         <div class="testimonial-card">
           <div class="testimonial-card__stars">★★★★★</div>
-          <p class="testimonial-card__text">"Había probado todo: Weight Watchers, keto, ayuno intermitente... Siempre recuperaba el peso. Por primera vez tengo un plan que no interrumpe mi vida. Llevo 8 meses manteniendo el peso perdido."</p>
-          <div class="testimonial-card__author"><div class="testimonial-card__avatar">A</div><div><strong>Alicia S.</strong><span>Madrid</span></div></div>
+          <p class="testimonial-card__text">
+            "El enfoque personalizado de Ana marcó la diferencia. Por fin un plan que se adapta a mi vida,
+            no al revés. He perdido 8 kg sin pasar hambre y con recetas riquísimas."
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">A</div>
+            <div>
+              <strong>Alicia S.</strong>
+              <span>Madrid</span>
+            </div>
+          </div>
         </div>
         <div class="testimonial-card">
           <div class="testimonial-card__stars">★★★★★</div>
-          <p class="testimonial-card__text">"Lo que más me ayudó fue saber que podía escribirle a Ana cuando tenía dudas o me sentía perdida. No me sentí sola en ningún momento del proceso."</p>
-          <div class="testimonial-card__author"><div class="testimonial-card__avatar">L</div><div><strong>Lucía D.</strong><span>Barcelona</span></div></div>
+          <p class="testimonial-card__text">
+            "Gracias a Nutriconscien aprendí a comer de verdad. Ana es cercana, profesional y siempre
+            disponible por Telegram. Lo recomiendo al 100%."
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">L</div>
+            <div>
+              <strong>Lucía D.</strong>
+              <span>Madrid</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PLANES -->
-  <section class="lsection" id="planes">
+  <!-- PRICING -->
+  <section class="pricing" id="planes">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">Da el primer paso</p>
-        <h2 class="section-title">Elige tu plan</h2>
+        <p class="section-eyebrow">Tarifas</p>
+        <h2 class="section-title">Elige tu Plan</h2>
       </div>
       <div class="pricing__grid">
         <div class="pricing-card">
@@ -202,7 +209,7 @@
   </section>
 
   <!-- NEWSLETTER -->
-  <section class="newsletter lsection lsection--alt">
+  <section class="newsletter">
     <div class="container newsletter__inner">
       <div class="newsletter__content">
         <h2 class="newsletter__title">Recibe consejos semanales para mejorar tu nutrición</h2>
@@ -214,8 +221,8 @@
     </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section class="contact lsection" id="contacto">
+  <!-- CONTACT -->
+  <section class="contact" id="contacto">
     <div class="container contact__inner">
       <div class="section-header">
         <p class="section-eyebrow">Contacto</p>
@@ -272,7 +279,8 @@
         <h4>Navegación</h4>
         <ul>
           <li><a href="#inicio">Inicio</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#planes">Planes</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
