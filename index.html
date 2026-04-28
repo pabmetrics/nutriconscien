@@ -10,7 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/images/logo.png" />
-  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body>
 
@@ -226,6 +225,7 @@
               <label class="entry__error entry__error--primary brevo-field-error"></label>
               <input type="text" name="email_address_check" value="" class="input--hidden">
               <input type="hidden" name="locale" value="es">
+              <input type="hidden" name="redirectionUrl" value="https://pabmetrics.github.io/nutriconscien/suscripcion-confirmada.html">
             </form>
           </div>
         </div>
@@ -319,15 +319,5 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
-  <script>
-    window.REQUIRED_CODE_ERROR_MESSAGE = 'Elija un código de país';
-    window.LOCALE = 'es';
-    window.EMAIL_INVALID_MESSAGE = "El email no es válido. Comprueba el formato e inténtalo de nuevo.";
-    window.REQUIRED_ERROR_MESSAGE = "Este campo no puede estar vacío.";
-    window.GENERIC_INVALID_MESSAGE = "La información no es válida. Comprueba el formato e inténtalo de nuevo.";
-    window.translation = { common: { selectedList: '{quantity} lista seleccionada', selectedLists: '{quantity} listas seleccionadas' } };
-    var AUTOHIDE = Boolean(0);
-  </script>
-  <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
