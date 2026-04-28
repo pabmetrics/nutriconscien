@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Grasa Corporal – Nutriconscien</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/calculadora.css" />
+  <link rel="stylesheet" href="assets/css/calculadora-grasa.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Nutriconscien" class="logo__img" />
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html#inicio" class="nav__link">Inicio</a></li>
+          <li><a href="index.html#servicios" class="nav__link">Servicios</a></li>
+          <li><a href="index.html#planes" class="nav__link">Planes</a></li>
+          <li><a href="blog.html" class="nav__link">Blog</a></li>
+          <li><a href="index.html#contacto" class="nav__link">Contacto</a></li>
+        </ul>
+      </nav>
+      <a href="https://calendar.google.com" target="_blank" class="btn btn--primary header__cta">
+        Reservar primera cita
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="tool-hero">
+    <div class="container">
+      <p class="section-eyebrow">Herramientas gratuitas</p>
+      <h1 class="tool-hero__title">Calculadora de Grasa Corporal e IMC</h1>
+      <p class="tool-hero__subtitle">
+        Descubre en qué rango de grasa corporal te encuentras según la escala CUN-BAE y calcula
+        tu Índice de Masa Corporal (IMC) para tener una visión completa de tu composición corporal.
+      </p>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="calc-section">
+    <div class="container calc-layout">
+
+      <!-- FORM -->
+      <div class="calc-card">
+        <h2 class="calc-card__title">Tus datos</h2>
+
+        <!-- SEXO -->
+        <div class="field-group">
+          <label class="field-label">Sexo biológico</label>
+          <div class="toggle-group">
+            <button class="toggle-btn toggle-btn--active" id="btnMujer" onclick="setSexo('mujer')">Mujer</button>
+            <button class="toggle-btn" id="btnHombre" onclick="setSexo('hombre')">Hombre</button>
+          </div>
+        </div>
+
+        <!-- EDAD -->
+        <div class="field-group">
+          <label class="field-label" for="edad">Edad</label>
+          <div class="input-wrapper">
+            <input type="number" id="edad" placeholder="30" min="18" max="100" />
+            <span class="input-unit">años</span>
+          </div>
+        </div>
+
+        <!-- PESO -->
+        <div class="field-group">
+          <label class="field-label" for="peso">Peso</label>
+          <div class="input-wrapper">
+            <input type="number" id="peso" placeholder="65" min="30" max="250" step="0.1" />
+            <span class="input-unit">kg</span>
+          </div>
+        </div>
+
+        <!-- ALTURA -->
+        <div class="field-group">
+          <label class="field-label" for="altura">Altura</label>
+          <div class="input-wrapper">
+            <input type="number" id="altura" placeholder="165" min="100" max="230" />
+            <span class="input-unit">cm</span>
+          </div>
+        </div>
+
+        <!-- % GRASA -->
+        <div class="field-group">
+          <label class="field-label" for="grasa">Porcentaje de grasa corporal</label>
+          <div class="input-wrapper">
+            <input type="number" id="grasa" placeholder="25" min="3" max="70" step="0.1" />
+            <span class="input-unit">%</span>
+          </div>
+          <p class="field-hint">Si no lo conoces, puedes medirlo con una báscula de bioimpedancia o mediante pliegues cutáneos.</p>
+        </div>
+
+        <button class="btn btn--primary calc-btn" onclick="calcular()">Analizar mi composición</button>
+        <p class="calc-error" id="calcError"></p>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="results-panel" id="resultsPanel">
+
+        <div class="results-placeholder" id="resultsPlaceholder">
+          <div class="results-placeholder__icon">📊</div>
+          <p>Rellena tus datos y pulsa <strong>Analizar</strong> para ver tus resultados.</p>
+        </div>
+
+        <div class="results-content" id="resultsContent" style="display:none">
+
+          <h2 class="calc-card__title">Tus resultados</h2>
+
+          <!-- GRASA CORPORAL -->
+          <div class="field-group">
+            <p class="result-block__label" style="font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-muted);">Porcentaje de grasa corporal</p>
+            <div class="fat-result-header">
+              <span class="fat-result-value" id="resFatValue">—%</span>
+              <span class="fat-badge" id="resFatBadge">—</span>
+            </div>
+            <div class="fat-scale">
+              <div class="fat-scale__bar">
+                <div class="fat-scale__segment fat-scale__segment--bajo">
+                  <span>Bajo</span>
+                </div>
+                <div class="fat-scale__segment fat-scale__segment--normal">
+                  <span>Normal</span>
+                </div>
+                <div class="fat-scale__segment fat-scale__segment--sobrepeso">
+                  <span>Sobrepeso</span>
+                </div>
+                <div class="fat-scale__segment fat-scale__segment--obesidad">
+                  <span>Obesidad</span>
+                </div>
+              </div>
+              <div class="fat-scale__marker-wrap">
+                <div class="fat-scale__marker" id="fatMarker">
+                  <div class="fat-scale__marker-arrow"></div>
+                </div>
+              </div>
+              <div class="fat-scale__labels" id="fatLabels"></div>
+            </div>
+            <p class="fat-desc" id="resFatDesc"></p>
+          </div>
+
+          <div class="result-divider"></div>
+
+          <!-- IMC -->
+          <div class="field-group">
+            <p class="result-block__label" style="font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-muted);">Índice de Masa Corporal (IMC)</p>
+            <div class="fat-result-header">
+              <span class="fat-result-value" id="resIMCValue">—</span>
+              <span class="fat-badge" id="resIMCBadge">—</span>
+            </div>
+            <div class="fat-scale">
+              <div class="fat-scale__bar">
+                <div class="fat-scale__segment fat-scale__segment--bajo">
+                  <span>Bajo</span>
+                </div>
+                <div class="fat-scale__segment fat-scale__segment--normal">
+                  <span>Normal</span>
+                </div>
+                <div class="fat-scale__segment fat-scale__segment--sobrepeso">
+                  <span>Sobrepeso</span>
+                </div>
+                <div class="fat-scale__segment fat-scale__segment--obesidad">
+                  <span>Obesidad</span>
+                </div>
+              </div>
+              <div class="fat-scale__marker-wrap">
+                <div class="fat-scale__marker" id="imcMarker">
+                  <div class="fat-scale__marker-arrow"></div>
+                </div>
+              </div>
+              <div class="fat-scale__labels" id="imcLabels"></div>
+            </div>
+            <p class="fat-desc" id="resIMCDesc"></p>
+          </div>
+
+          <div class="result-divider"></div>
+
+          <!-- COMPOSICIÓN -->
+          <div class="field-group">
+            <p class="result-block__label" style="font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-muted);">Composición corporal estimada</p>
+            <div class="composition-grid">
+              <div class="composition-card composition-card--fat">
+                <p class="composition-card__label">Masa grasa</p>
+                <p class="composition-card__value" id="resMasaGrasa">—kg</p>
+              </div>
+              <div class="composition-card composition-card--lean">
+                <p class="composition-card__label">Masa magra</p>
+                <p class="composition-card__value" id="resMasaMagra">—kg</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RANGOS DE REFERENCIA -->
+          <div class="reference-box" id="referenceBox"></div>
+
+          <!-- DISCLAIMER -->
+          <div class="calc-disclaimer">
+            <p>⚠️ Estos valores son <strong>orientativos</strong>. El IMC no distingue entre masa grasa y muscular. Para una evaluación precisa de tu composición corporal, consulta con una profesional.</p>
+          </div>
+
+          <a href="https://calendar.google.com" target="_blank" class="btn btn--primary" style="width:100%;text-align:center;margin-top:8px;">
+            Quiero un plan personalizado
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INFO SECTION -->
+  <section class="info-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">¿Cómo se interpretan?</p>
+        <h2 class="section-title">Grasa corporal vs IMC</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card__num">01</div>
+          <h3>% Grasa corporal (CUN-BAE)</h3>
+          <p>Mide directamente la proporción de grasa en tu cuerpo. Es el indicador más preciso de composición corporal. Los rangos saludables varían según sexo y edad.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card__num">02</div>
+          <h3>IMC</h3>
+          <p>Relaciona peso y altura. Es una herramienta de cribado rápida pero no distingue entre grasa y músculo. Una persona muy musculada puede tener IMC elevado sin exceso de grasa.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card__num">03</div>
+          <h3>Visión conjunta</h3>
+          <p>Lo ideal es interpretar ambos indicadores juntos. Un IMC normal con % de grasa elevado (obesidad sarcopénica) puede pasar desapercibido si solo se mira el peso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="calc-cta">
+    <div class="container calc-cta__inner">
+      <div>
+        <h2>¿Quieres mejorar tu composición corporal?</h2>
+        <p>Un plan nutricional personalizado tiene en cuenta tu masa grasa, masa muscular y objetivos reales para darte una estrategia que funciona.</p>
+      </div>
+      <a href="https://calendar.google.com" target="_blank" class="btn btn--primary">Reservar primera cita</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <p class="footer__tagline">Transformando vidas con nutrición personalizada y datos</p>
+      </div>
+      <div class="footer__links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#planes">Planes</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Herramientas</h4>
+        <ul>
+          <li><a href="calculadora-calorias.html">Calculadora de calorías</a></li>
+          <li><a href="calculadora-grasa-corporal.html">Calculadora de grasa corporal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>© 2024 Nutriconscien · Ana del Pozo. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/calculadora-grasa.js"></script>
+</body>
+</html>

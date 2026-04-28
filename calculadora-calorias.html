@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Calorías – Nutriconscien</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/calculadora.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Nutriconscien" class="logo__img" />
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html#inicio" class="nav__link">Inicio</a></li>
+          <li><a href="index.html#servicios" class="nav__link">Servicios</a></li>
+          <li><a href="index.html#planes" class="nav__link">Planes</a></li>
+          <li><a href="blog.html" class="nav__link">Blog</a></li>
+          <li><a href="index.html#contacto" class="nav__link">Contacto</a></li>
+        </ul>
+      </nav>
+      <a href="https://calendar.google.com" target="_blank" class="btn btn--primary header__cta">
+        Reservar primera cita
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="tool-hero">
+    <div class="container">
+      <p class="section-eyebrow">Herramientas gratuitas</p>
+      <h1 class="tool-hero__title">Calculadora de Calorías Diarias</h1>
+      <p class="tool-hero__subtitle">
+        Calcula tu metabolismo basal (TMB) y tus necesidades calóricas totales según tu nivel de actividad
+        usando la ecuación de Harris-Benedict revisada.
+      </p>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="calc-section">
+    <div class="container calc-layout">
+
+      <!-- FORM -->
+      <div class="calc-card">
+        <h2 class="calc-card__title">Tus datos</h2>
+
+        <!-- SEXO -->
+        <div class="field-group">
+          <label class="field-label">Sexo biológico</label>
+          <div class="toggle-group">
+            <button class="toggle-btn toggle-btn--active" id="btnMujer" onclick="setSexo('mujer')">Mujer</button>
+            <button class="toggle-btn" id="btnHombre" onclick="setSexo('hombre')">Hombre</button>
+          </div>
+        </div>
+
+        <!-- EDAD -->
+        <div class="field-group">
+          <label class="field-label" for="edad">Edad</label>
+          <div class="input-wrapper">
+            <input type="number" id="edad" placeholder="30" min="15" max="100" />
+            <span class="input-unit">años</span>
+          </div>
+        </div>
+
+        <!-- PESO -->
+        <div class="field-group">
+          <label class="field-label" for="peso">Peso</label>
+          <div class="input-wrapper">
+            <input type="number" id="peso" placeholder="65" min="30" max="250" step="0.1" />
+            <span class="input-unit">kg</span>
+          </div>
+        </div>
+
+        <!-- ALTURA -->
+        <div class="field-group">
+          <label class="field-label" for="altura">Altura</label>
+          <div class="input-wrapper">
+            <input type="number" id="altura" placeholder="165" min="100" max="230" />
+            <span class="input-unit">cm</span>
+          </div>
+        </div>
+
+        <!-- ACTIVIDAD -->
+        <div class="field-group">
+          <label class="field-label">Nivel de actividad</label>
+          <div class="activity-list">
+            <label class="activity-option">
+              <input type="radio" name="actividad" value="1.2" checked />
+              <div class="activity-option__content">
+                <strong>Sedentario</strong>
+                <span>Sin ejercicio o muy poco</span>
+              </div>
+            </label>
+            <label class="activity-option">
+              <input type="radio" name="actividad" value="1.375" />
+              <div class="activity-option__content">
+                <strong>Ligero</strong>
+                <span>Ejercicio 1-2 días/semana</span>
+              </div>
+            </label>
+            <label class="activity-option">
+              <input type="radio" name="actividad" value="1.55" />
+              <div class="activity-option__content">
+                <strong>Moderado</strong>
+                <span>Ejercicio 3-5 días/semana</span>
+              </div>
+            </label>
+            <label class="activity-option">
+              <input type="radio" name="actividad" value="1.725" />
+              <div class="activity-option__content">
+                <strong>Activo</strong>
+                <span>Ejercicio 6-7 días/semana</span>
+              </div>
+            </label>
+            <label class="activity-option">
+              <input type="radio" name="actividad" value="1.9" />
+              <div class="activity-option__content">
+                <strong>Muy activo</strong>
+                <span>Atleta o doble sesión diaria</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- OBJETIVO -->
+        <div class="field-group">
+          <label class="field-label">Objetivo</label>
+          <div class="goal-grid">
+            <label class="goal-option">
+              <input type="radio" name="objetivo" value="deficit" checked />
+              <div class="goal-option__content">
+                <span class="goal-icon">📉</span>
+                <strong>Perder peso</strong>
+              </div>
+            </label>
+            <label class="goal-option">
+              <input type="radio" name="objetivo" value="mantenimiento" />
+              <div class="goal-option__content">
+                <span class="goal-icon">⚖️</span>
+                <strong>Mantenimiento</strong>
+              </div>
+            </label>
+            <label class="goal-option">
+              <input type="radio" name="objetivo" value="volumen" />
+              <div class="goal-option__content">
+                <span class="goal-icon">💪</span>
+                <strong>Ganar músculo</strong>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <button class="btn btn--primary calc-btn" onclick="calcular()">Calcular mis calorías</button>
+        <p class="calc-error" id="calcError"></p>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="results-panel" id="resultsPanel">
+
+        <div class="results-placeholder" id="resultsPlaceholder">
+          <div class="results-placeholder__icon">🔢</div>
+          <p>Rellena tus datos y pulsa <strong>Calcular</strong> para ver tus resultados.</p>
+        </div>
+
+        <div class="results-content" id="resultsContent" style="display:none">
+
+          <h2 class="calc-card__title">Tus resultados</h2>
+
+          <!-- TMB -->
+          <div class="result-block result-block--highlight">
+            <p class="result-block__label">Metabolismo Basal (TMB)</p>
+            <p class="result-block__value" id="resTMB">— kcal</p>
+            <p class="result-block__desc">Calorías que tu cuerpo necesita en reposo absoluto para mantener sus funciones vitales.</p>
+          </div>
+
+          <!-- TDEE -->
+          <div class="result-block">
+            <p class="result-block__label">Gasto Total Diario (TDEE)</p>
+            <p class="result-block__value" id="resTDEE">— kcal</p>
+            <p class="result-block__desc">Calorías totales que gastas al día incluyendo tu actividad física.</p>
+          </div>
+
+          <!-- OBJETIVO -->
+          <div class="result-block result-block--goal">
+            <p class="result-block__label" id="resObjetivoLabel">Calorías para tu objetivo</p>
+            <p class="result-block__value result-block__value--goal" id="resObjetivo">— kcal</p>
+            <p class="result-block__desc" id="resObjetivoDesc"></p>
+          </div>
+
+          <!-- MACROS -->
+          <div class="macros-section">
+            <h3 class="macros-title">Distribución de macronutrientes orientativa</h3>
+            <div class="macros-grid">
+              <div class="macro-card macro-card--protein">
+                <p class="macro-card__label">Proteínas</p>
+                <p class="macro-card__value" id="resProt">—g</p>
+                <p class="macro-card__sub">1.8 g/kg de peso</p>
+              </div>
+              <div class="macro-card macro-card--carbs">
+                <p class="macro-card__label">Carbohidratos</p>
+                <p class="macro-card__value" id="resCarbs">—g</p>
+                <p class="macro-card__sub">~45% de las calorías</p>
+              </div>
+              <div class="macro-card macro-card--fat">
+                <p class="macro-card__label">Grasas</p>
+                <p class="macro-card__value" id="resFat">—g</p>
+                <p class="macro-card__sub">~30% de las calorías</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- DISCLAIMER -->
+          <div class="calc-disclaimer">
+            <p>⚠️ Estos valores son una <strong>estimación orientativa</strong> basada en la ecuación de Harris-Benedict revisada (Roza & Shizgal, 1984). Para un plan nutricional adaptado a ti, consulta con una profesional.</p>
+          </div>
+
+          <a href="https://calendar.google.com" target="_blank" class="btn btn--primary" style="width:100%;text-align:center;margin-top:8px;">
+            Quiero un plan personalizado
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INFO SECTION -->
+  <section class="info-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">¿Cómo funciona?</p>
+        <h2 class="section-title">La ecuación de Harris-Benedict</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card__num">01</div>
+          <h3>Metabolismo Basal (TMB)</h3>
+          <p>Es la energía mínima que tu cuerpo necesita para funcionar en reposo: respirar, mantener la temperatura corporal, hacer latir el corazón...</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card__num">02</div>
+          <h3>Factor de actividad</h3>
+          <p>Tu TMB se multiplica por un factor según tu nivel de actividad para obtener el gasto calórico total real de tu día a día.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card__num">03</div>
+          <h3>Ajuste según objetivo</h3>
+          <p>Según si quieres perder peso (déficit de 500 kcal), mantenerte o ganar músculo (superávit de 300 kcal), ajustamos las calorías objetivo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="calc-cta">
+    <div class="container calc-cta__inner">
+      <div>
+        <h2>¿Quieres un plan adaptado a ti?</h2>
+        <p>Los cálculos son una guía, pero cada persona es diferente. Un plan personalizado tiene en cuenta tu historial, preferencias y objetivos reales.</p>
+      </div>
+      <a href="https://calendar.google.com" target="_blank" class="btn btn--primary">Reservar primera cita</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <p class="footer__tagline">Transformando vidas con nutrición personalizada y datos</p>
+      </div>
+      <div class="footer__links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#planes">Planes</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Herramientas</h4>
+        <ul>
+          <li><a href="calculadora-calorias.html">Calculadora de calorías</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>© 2024 Nutriconscien · Ana del Pozo. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/calculadora.js"></script>
+</body>
+</html>
