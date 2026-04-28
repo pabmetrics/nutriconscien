@@ -548,9 +548,9 @@ ul { list-style: none; }
 .brevo-error { background: #ffeded; color: #661d1d; border: 1px solid #ff4949; }
 .brevo-success { background: #e7faf0; color: #085229; border: 1px solid #13ce66; }
 
-/* Hide Brevo default styles we don't need */
-.sib-form-message-panel { display: none; }
-.sib-form-message-panel.active { display: block; }
+/* Brevo muestra/oculta con esta clase */
+.sib-form-message-panel:not(.active) { display: none; }
+
 .input--hidden { display: none !important; }
 
 .newsletter__title {
