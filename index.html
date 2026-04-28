@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body>
 
@@ -202,14 +203,32 @@
   </section>
 
   <!-- NEWSLETTER -->
-  <section class="newsletter lsection lsection--alt">
+  <section class="newsletter lsection lsection--alt" id="newsletter">
     <div class="container newsletter__inner">
       <div class="newsletter__content">
         <h2 class="newsletter__title">Recibe consejos semanales para mejorar tu nutrición</h2>
         <p>Únete a mi comunidad y recibe tips, recetas y estrategias directamente en tu bandeja de entrada.</p>
       </div>
-      <div class="newsletter__iframe-wrap">
-        <iframe id="brevoForm" width="540" height="450" src="https://f7767d74.sibforms.com/serve/MUIFANGk6RADU3I6H0S9LBJeH_jlbRPWVYMjFEl4GUp7q37UObEW_yJ9XGe0L4G_eRWZNRGvUQo0i9hk-briIsdOD1lDGfDmareHnHlXNkFYgmgi-OY_vh7s1ysfBccUDr0SojbFp5El1BJ0S4XYnCrY92bZGrIldT9z2aYKVvab6sf5vgWhb6uRSDMN1bG3HDCpeYlzqNpD1kXjlQ==" frameborder="0" scrolling="no" allowfullscreen style="display:block;margin:0 auto;max-width:100%;border-radius:12px;"></iframe>
+      <div class="newsletter__form-wrap">
+        <div id="sib-form-container" class="sib-form-container">
+          <div id="error-message" class="sib-form-message-panel brevo-error" style="display:none">
+            <span>No hemos podido validar tu suscripción. Inténtalo de nuevo.</span>
+          </div>
+          <div id="success-message" class="sib-form-message-panel brevo-success" style="display:none">
+            <span>✓ ¡Suscripción realizada con éxito!</span>
+          </div>
+          <div id="sib-container" class="sib-container--large sib-container--horizontal brevo-form-box">
+            <form id="sib-form" method="POST" action="https://f7767d74.sibforms.com/serve/MUIFANGk6RADU3I6H0S9LBJeH_jlbRPWVYMjFEl4GUp7q37UObEW_yJ9XGe0L4G_eRWZNRGvUQo0i9hk-briIsdOD1lDGfDmareHnHlXNkFYgmgi-OY_vh7s1ysfBccUDr0SojbFp5El1BJ0S4XYnCrY92bZGrIldT9z2aYKVvab6sf5vgWhb6uRSDMN1bG3HDCpeYlzqNpD1kXjlQ==" data-type="subscription">
+              <div class="brevo-row">
+                <input class="brevo-input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Tu correo electrónico" data-required="true" required />
+                <button class="btn btn--primary brevo-btn" form="sib-form" type="submit">Suscribirme</button>
+              </div>
+              <label class="entry__error entry__error--primary brevo-field-error"></label>
+              <input type="text" name="email_address_check" value="" class="input--hidden">
+              <input type="hidden" name="locale" value="es">
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -300,5 +319,15 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Elija un código de país';
+    window.LOCALE = 'es';
+    window.EMAIL_INVALID_MESSAGE = "El email no es válido. Comprueba el formato e inténtalo de nuevo.";
+    window.REQUIRED_ERROR_MESSAGE = "Este campo no puede estar vacío.";
+    window.GENERIC_INVALID_MESSAGE = "La información no es válida. Comprueba el formato e inténtalo de nuevo.";
+    window.translation = { common: { selectedList: '{quantity} lista seleccionada', selectedLists: '{quantity} listas seleccionadas' } };
+    var AUTOHIDE = Boolean(0);
+  </script>
+  <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
