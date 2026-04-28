@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog – Nutriconscien</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/blog.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Nutriconscien" class="logo__img" />
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html#inicio" class="nav__link">Inicio</a></li>
+          <li><a href="index.html#servicios" class="nav__link">Servicios</a></li>
+          <li><a href="index.html#planes" class="nav__link">Planes</a></li>
+          <li><a href="blog.html" class="nav__link nav__link--active">Blog</a></li>
+          <li><a href="index.html#contacto" class="nav__link">Contacto</a></li>
+        </ul>
+      </nav>
+      <a href="https://calendar.google.com" target="_blank" class="btn btn--primary header__cta">
+        Reservar primera cita
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- BLOG HERO -->
+  <section class="blog-hero">
+    <div class="container">
+      <p class="section-eyebrow">Blog</p>
+      <h1 class="blog-hero__title">Nutrición &amp; Bienestar</h1>
+      <p class="blog-hero__subtitle">Consejos, recetas y estrategias para transformar tu relación con la comida.</p>
+    </div>
+  </section>
+
+  <!-- POSTS GRID -->
+  <section class="blog-listing">
+    <div class="container">
+      <div class="blog-grid" id="blogGrid">
+        <div class="blog-loading">Cargando posts...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <p class="footer__tagline">Transformando vidas con nutrición personalizada y datos</p>
+      </div>
+      <div class="footer__links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#planes">Planes</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Contacto</h4>
+        <p><a href="mailto:ana.dnutricion@gmail.com">ana.dnutricion@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>© 2024 Nutriconscien · Ana del Pozo. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/blog.js"></script>
+</body>
+</html>

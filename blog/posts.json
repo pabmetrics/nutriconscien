@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "aprende-a-crear-tu-plato-saludable",
+    "title": "Aprende a crear tu plato saludable",
+    "date": "2025-02-20",
+    "category": "Nutrición básica",
+    "excerpt": "No es necesario renunciar a tus comidas favoritas para comer sano. Con pequeños ajustes en ingredientes y técnicas de cocina, puedes transformar cualquier receta."
+  },
+  {
+    "slug": "nutricion-para-ganar-fuerza-y-volumen",
+    "title": "Alimenta tus músculos: Nutrición para ganar fuerza y volumen",
+    "date": "2025-02-14",
+    "category": "Nutrición deportiva",
+    "excerpt": "El aumento de masa muscular no depende solo del entrenamiento. Descubre cómo la nutrición es clave para ganar fuerza, recuperarte mejor y maximizar tus resultados."
+  },
+  {
+    "slug": "dieta-baja-en-grasas",
+    "title": "Dieta baja en grasas: ¿Es para ti?",
+    "date": "2025-02-06",
+    "category": "Tipos de dieta",
+    "excerpt": "Las dietas bajas en grasa han sido promovidas durante décadas, pero no son para todo el mundo. Descubre cuándo tiene sentido y cuáles son sus riesgos."
+  },
+  {
+    "slug": "hinchazon-y-malestar-por-sibo",
+    "title": "¿Te sientes hinchado y no sabes por qué? Podría ser SIBO",
+    "date": "2025-01-30",
+    "category": "Salud digestiva",
+    "excerpt": "La hinchazón y el malestar digestivo después de comer pueden tener una causa concreta: el SIBO. Te explicamos qué es y cómo mejorar los síntomas con la alimentación."
+  },
+  {
+    "slug": "que-comer-antes-de-una-competicion",
+    "title": "¿Qué comer antes de una competición?",
+    "date": "2025-01-23",
+    "category": "Nutrición deportiva",
+    "excerpt": "Lo que comes en las horas previas a una competición puede marcar la diferencia entre un rendimiento óptimo y quedarte sin energía en el momento clave."
+  },
+  {
+    "slug": "nutricion-y-ciclo-menstrual",
+    "title": "Nutrición y Ciclo Menstrual: Claves para Cuidar tu Salud Hormonal",
+    "date": "2025-01-16",
+    "category": "Salud hormonal",
+    "excerpt": "Adaptar tu alimentación a cada fase del ciclo menstrual puede mejorar tu energía, reducir los síntomas y potenciar tu salud hormonal de forma natural."
+  },
+  {
+    "slug": "nutricion-y-padel",
+    "title": "Nutrición y pádel: la combinación perfecta para el rendimiento",
+    "date": "2025-01-13",
+    "category": "Nutrición deportiva",
+    "excerpt": "El pádel exige agilidad, resistencia y precisión. Descubre cómo una nutrición estratégica mejora tu rendimiento en pista y acelera tu recuperación."
+  },
+  {
+    "slug": "relacion-entre-nutricion-y-equilibrio-hormonal",
+    "title": "Relación entre nutrición y equilibrio hormonal: lo que debes saber",
+    "date": "2025-01-12",
+    "category": "Salud hormonal",
+    "excerpt": "Los desequilibrios hormonales pueden manifestarse de muchas formas. Descubre qué alimentos favorecen tus hormonas y cuáles deberías evitar."
+  },
+  {
+    "slug": "como-es-una-alimentacion-equilibrada",
+    "title": "¿Cómo es una alimentación equilibrada?",
+    "date": "2025-01-09",
+    "category": "Nutrición básica",
+    "excerpt": "Mantener una alimentación equilibrada es clave para una buena salud. Exploramos los principios fundamentales y cómo llevarlos a la práctica en tu día a día."
+  },
+  {
+    "slug": "es-malo-comer-carbohidratos-por-la-noche",
+    "title": "¿Es malo comer carbohidratos por la noche?",
+    "date": "2025-01-02",
+    "category": "Mitos nutricionales",
+    "excerpt": "¿Engorda comer carbohidratos por la noche? Desmontamos uno de los mitos más extendidos de la nutrición y te explicamos lo que dice la ciencia."
+  }
+]
