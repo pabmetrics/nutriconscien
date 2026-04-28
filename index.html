@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -223,6 +224,7 @@
                 <button class="btn btn--primary brevo-btn" form="sib-form" type="submit">Suscribirme</button>
               </div>
               <label class="entry__error entry__error--primary brevo-field-error"></label>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAADFNwD9pRbUrcaRy" data-theme="light"></div>
               <input type="text" name="email_address_check" value="" class="input--hidden">
               <input type="hidden" name="locale" value="es">
             </form>
@@ -326,8 +328,15 @@
       const btn = form.querySelector('.brevo-btn');
       const errorEl = document.getElementById('error-message');
       const successEl = document.getElementById('success-message');
+      const turnstileToken = form.querySelector('[name="cf-turnstile-response"]');
 
       if (!email) return;
+
+      if (!turnstileToken || !turnstileToken.value) {
+        errorEl.querySelector('span').textContent = 'Por favor, completa el captcha.';
+        errorEl.classList.add('active');
+        return;
+      }
 
       btn.textContent = 'Enviando...';
       btn.disabled = true;
