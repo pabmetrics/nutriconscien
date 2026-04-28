@@ -21,15 +21,12 @@ window.addEventListener('scroll', () => {
   header.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.08)' : 'none';
 });
 
-// Newsletter form
-document.getElementById('newsletterForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const input = e.target.querySelector('input');
-  const btn = e.target.querySelector('button');
-  btn.textContent = '¡Suscrito! ✓';
-  btn.disabled = true;
-  input.value = '';
-  setTimeout(() => { btn.textContent = 'Suscribirme'; btn.disabled = false; }, 3000);
+// Brevo iframe — ampliar altura al mostrar confirmación
+window.addEventListener('message', e => {
+  if (e.data && e.data.type === 'form-submitted') {
+    const iframe = document.querySelector('.newsletter__iframe-wrap iframe');
+    if (iframe) iframe.height = '420';
+  }
 });
 
 // Contact form
