@@ -157,50 +157,50 @@
   <section class="lsection" id="planes">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">Da el primer paso</p>
-        <h2 class="section-title">Elige tu plan</h2>
+        <p class="section-eyebrow">El programa</p>
+        <h2 class="section-title">Un único plan. Todo incluido.</h2>
+        <p style="color:var(--color-text-muted);max-width:520px;margin:0 auto;font-size:0.95rem;">Plazas limitadas. Apúntate a la lista de espera y te avisamos cuando haya disponibilidad.</p>
       </div>
-      <div class="pricing__grid">
-        <div class="pricing-card">
-          <h3 class="pricing-card__name">Pack Inicial</h3>
-          <div class="pricing-card__price"><span class="price">80€</span></div>
+      <div class="single-plan">
+        <div class="pricing-card pricing-card--featured single-plan__card">
+          <div class="pricing-card__badge">Lista de espera abierta</div>
+          <h3 class="pricing-card__name">Programa 3 meses</h3>
+          <div class="pricing-card__price"><span class="price">200€</span><span class="price-period"> / 3 meses</span></div>
           <ul class="pricing-card__features">
-            <li>✓ Consulta inicial completa</li>
-            <li>✓ Plan nutricional personalizado</li>
-            <li>✓ Menú semanal detallado</li>
-            <li>✓ Lista de la compra</li>
-            <li>✓ Soporte por Telegram</li>
-          </ul>
-          <a href="https://calendar.google.com" target="_blank" class="btn btn--primary">Reservar</a>
-        </div>
-        <div class="pricing-card pricing-card--featured">
-          <div class="pricing-card__badge">Más popular</div>
-          <h3 class="pricing-card__name">Bono Mensual</h3>
-          <div class="pricing-card__price"><span class="price">Desde 50€</span></div>
-          <ul class="pricing-card__features">
-            <li>✓ Consultas de seguimiento</li>
+            <li>✓ Plan nutricional 100% personalizado</li>
+            <li>✓ 2 sesiones mensuales (6 en total)</li>
             <li>✓ Menús semanales con recetas</li>
-            <li>✓ Informes de progreso</li>
-            <li>✓ Ajustes continuos del plan</li>
-            <li>✓ Soporte prioritario por Telegram</li>
+            <li>✓ Lista de la compra</li>
+            <li>✓ Seguimiento continuo por Telegram</li>
+            <li>✓ Informes de progreso mensuales</li>
+            <li>✓ Ajustes del plan incluidos</li>
           </ul>
-          <a href="https://calendar.google.com" target="_blank" class="btn btn--primary">Reservar</a>
-        </div>
-        <div class="pricing-card">
-          <h3 class="pricing-card__name">Consulta Individual</h3>
-          <div class="pricing-card__price"><span class="price">Desde 35€</span></div>
-          <ul class="pricing-card__features">
-            <li>✓ Cita puntual online</li>
-            <li>✓ Resolución de dudas</li>
-            <li>✓ Orientación nutricional</li>
-            <li>✓ Recomendaciones personalizadas</li>
-            <li>✓ Sin compromiso de continuidad</li>
-          </ul>
-          <a href="https://calendar.google.com" target="_blank" class="btn btn--primary">Reservar</a>
+          <button class="btn btn--primary" onclick="abrirListaEspera()">Unirme a la lista de espera</button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- MODAL LISTA DE ESPERA -->
+  <div class="modal-overlay" id="modalOverlay" onclick="cerrarModal(event)">
+    <div class="modal">
+      <button class="modal__close" onclick="cerrarListaEspera()">✕</button>
+      <h2 class="modal__title">Lista de espera</h2>
+      <p class="modal__desc">Déjame tu nombre y email y te aviso en cuanto haya una plaza disponible.</p>
+      <form class="modal__form" id="waitlistForm">
+        <div class="form-group">
+          <label for="wNombre">Nombre</label>
+          <input type="text" id="wNombre" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="wEmail">Email</label>
+          <input type="email" id="wEmail" placeholder="tu@email.com" required />
+        </div>
+        <button type="submit" class="btn btn--primary" style="width:100%">Apuntarme</button>
+        <p class="modal__feedback" id="modalFeedback"></p>
+      </form>
+    </div>
+  </div>
 
   <!-- NEWSLETTER -->
   <section class="newsletter lsection lsection--alt" id="newsletter">
@@ -320,6 +320,55 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init('kIDl0p49M_JY1KF63');
+
+    function abrirListaEspera() {
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function cerrarListaEspera() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function cerrarModal(e) {
+      if (e.target === document.getElementById('modalOverlay')) cerrarListaEspera();
+    }
+
+    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const feedback = document.getElementById('modalFeedback');
+      const nombre = document.getElementById('wNombre').value;
+      const email = document.getElementById('wEmail').value;
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        feedback.style.color = '#c0392b';
+        feedback.textContent = 'Introduce un email válido.';
+        return;
+      }
+
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      emailjs.send('service_zevc9t8', 'template_ge3yzyd', { nombre, email })
+        .then(() => {
+          feedback.style.color = '#085229';
+          feedback.textContent = '✓ ¡Apuntada! Te avisaré cuando haya plaza.';
+          this.reset();
+          btn.textContent = 'Apuntarme';
+          btn.disabled = false;
+        })
+        .catch(() => {
+          feedback.style.color = '#c0392b';
+          feedback.textContent = 'Algo salió mal. Inténtalo de nuevo.';
+          btn.textContent = 'Apuntarme';
+          btn.disabled = false;
+        });
+    });
+  </script>
   <script>
     document.getElementById('sib-form').addEventListener('submit', function(e) {
       e.preventDefault();
