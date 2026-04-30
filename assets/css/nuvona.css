@@ -52,6 +52,10 @@ body { font-family: var(--font-body); }
 .pricing-card--featured { background: var(--color-black); }
 .pricing-card--featured .pricing-card__badge { background: var(--color-accent); color: #fff; }
 .pricing-card--featured .btn--primary { background: var(--color-accent); border-color: var(--color-accent); }
+.pricing-card--featured .pricing-card__name { color: #fff; }
+.pricing-card--featured .price { color: #fff; }
+.pricing-card--featured .price-period { color: rgba(255,255,255,0.6); }
+.pricing-card--featured .pricing-card__features li { color: rgba(255,255,255,0.85); }
 
 /* Pain conclusion */
 .lpains-conclusion { background: var(--color-black); }
