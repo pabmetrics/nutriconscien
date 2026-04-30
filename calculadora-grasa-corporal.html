@@ -206,9 +206,9 @@
             <p>⚠️ Estos valores son <strong>orientativos</strong>. El IMC no distingue entre masa grasa y muscular. Para una evaluación precisa de tu composición corporal, consulta con una profesional.</p>
           </div>
 
-          <a href="https://calendar.google.com" target="_blank" class="btn btn--primary" style="width:100%;text-align:center;margin-top:8px;">
+          <button onclick="abrirListaEspera()" class="btn btn--primary" style="width:100%;text-align:center;margin-top:8px;">
             Quiero un plan personalizado
-          </a>
+          </button>
 
         </div>
       </div>
@@ -250,41 +250,105 @@
         <h2>¿Quieres mejorar tu composición corporal?</h2>
         <p>Un plan nutricional personalizado tiene en cuenta tu masa grasa, masa muscular y objetivos reales para darte una estrategia que funciona.</p>
       </div>
-      <a href="https://calendar.google.com" target="_blank" class="btn btn--primary">Reservar primera cita</a>
+      <button onclick="abrirListaEspera()" class="btn btn--primary">Unirme a la lista de espera</button>
     </div>
   </section>
+
+  <!-- MODAL LISTA DE ESPERA -->
+  <div class="modal-overlay" id="modalOverlay" onclick="cerrarModal(event)">
+    <div class="modal">
+      <button class="modal__close" onclick="cerrarListaEspera()">✕</button>
+      <h2 class="modal__title">Lista de espera</h2>
+      <p class="modal__desc">Déjanos tu nombre y email y te avisamos en cuanto haya una plaza disponible.</p>
+      <form class="modal__form" id="waitlistForm">
+        <div class="form-group">
+          <label for="wNombre">Nombre</label>
+          <input type="text" id="wNombre" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="wEmail">Email</label>
+          <input type="email" id="wEmail" placeholder="tu@email.com" required />
+        </div>
+        <button type="submit" class="btn btn--primary" style="width:100%">Apuntarme</button>
+        <p class="modal__feedback" id="modalFeedback"></p>
+      </form>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <p class="footer__tagline">Transformando vidas con nutrición personalizada y datos</p>
+        <p class="footer__tagline">La nutrición que tu cuerpo entiende</p>
       </div>
       <div class="footer__links">
         <h4>Navegación</h4>
         <ul>
           <li><a href="index.html#inicio">Inicio</a></li>
-          <li><a href="index.html#servicios">Servicios</a></li>
-          <li><a href="index.html#planes">Planes</a></li>
-          <li><a href="index.html#contacto">Contacto</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blog.html">Blog</a></li>
         </ul>
       </div>
       <div class="footer__contact">
         <h4>Herramientas</h4>
         <ul>
           <li><a href="calculadora-calorias.html">Calculadora de calorías</a></li>
-          <li><a href="calculadora-grasa-corporal.html">Calculadora de grasa corporal</a></li>
+          <li><a href="calculadora-grasa-corporal.html">Calculadora de grasa</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
       <div class="container">
-        <p>© 2024 Nutriconscien · Ana del Pozo. Todos los derechos reservados.</p>
+        <p>© 2025 Nuvona. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/calculadora-grasa.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init('kIDl0p49M_JY1KF63');
+    function abrirListaEspera() {
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function cerrarListaEspera() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function cerrarModal(e) {
+      if (e.target === document.getElementById('modalOverlay')) cerrarListaEspera();
+    }
+    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const feedback = document.getElementById('modalFeedback');
+      const nombre = document.getElementById('wNombre').value;
+      const email = document.getElementById('wEmail').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        feedback.style.color = '#c0392b';
+        feedback.textContent = 'Introduce un email válido.';
+        return;
+      }
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+      emailjs.send('service_zevc9t8', 'template_ge3yzyd', { nombre, email })
+        .then(() => {
+          feedback.style.color = '#085229';
+          feedback.textContent = '✓ ¡Apuntada! Te avisaremos cuando haya plaza.';
+          this.reset();
+          btn.textContent = 'Apuntarme';
+          btn.disabled = false;
+        })
+        .catch(() => {
+          feedback.style.color = '#c0392b';
+          feedback.textContent = 'Algo salió mal. Inténtalo de nuevo.';
+          btn.textContent = 'Apuntarme';
+          btn.disabled = false;
+        });
+    });
+  </script>
 </body>
 </html>
