@@ -1,0 +1,65 @@
+/* ===== VITHAL BRAND OVERRIDES ===== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-accent:       #7D9B76;
+  --color-accent-light: rgba(125,155,118,0.12);
+  --color-black:        #1A1A1A;
+  --color-bg:           #FAFAF8;
+  --color-bg-alt:       #F2F1ED;
+  --color-border:       #E2E0DA;
+  --font-display:       'Space Grotesk', sans-serif;
+  --font-body:          'Space Grotesk', sans-serif;
+}
+
+body { font-family: var(--font-body); }
+
+/* Header wordmark */
+.vithal-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-black);
+  text-decoration: none;
+}
+.vithal-tagline {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 500;
+  margin-top: 2px;
+  display: block;
+}
+
+/* Button accent */
+.btn--primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.btn--primary:hover {
+  background: var(--color-black);
+  border-color: var(--color-black);
+}
+
+/* Comparison good col */
+.lcompare__col--good { background: var(--color-black); border-color: var(--color-black); }
+.lcompare__col--good h3 { color: var(--color-accent); }
+
+/* Pricing featured */
+.pricing-card--featured { background: var(--color-black); }
+.pricing-card--featured .pricing-card__badge { background: var(--color-accent); color: #fff; }
+.pricing-card--featured .btn--primary { background: var(--color-accent); border-color: var(--color-accent); }
+
+/* Pain conclusion */
+.lpains-conclusion { background: var(--color-black); }
+.lpains-conclusion strong { color: var(--color-accent); }
+
+/* Section titles */
+.section-title { font-family: var(--font-display); }
+.lhero__title  { font-family: var(--font-display); }
+
+/* Footer */
+.footer { background: #111; }
