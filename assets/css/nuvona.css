@@ -1,6 +1,6 @@
 /* ===== VITHAL BRAND OVERRIDES ===== */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+Telugu:wght@700&display=swap');
 
 :root {
   --color-accent:       #7D9B76;
@@ -17,7 +17,7 @@ body { font-family: var(--font-body); }
 
 /* Header wordmark */
 .nuvona-wordmark {
-  font-family: var(--font-display);
+  font-family: 'Noto Sans Telugu', var(--font-display);
   font-size: 1.65rem;
   font-weight: 700;
   letter-spacing: -0.03em;
