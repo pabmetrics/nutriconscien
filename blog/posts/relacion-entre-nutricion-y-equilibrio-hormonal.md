@@ -54,4 +54,4 @@ Una dieta rica en nutrientes esenciales no solo favorece el bienestar físico, s
 
 ---
 
-¿Quieres un plan nutricional personalizado? [Reserva tu primera cita aquí](https://calendar.google.com) y empezamos juntas.
+¿Quieres un plan nutricional personalizado? [Apúntate a la lista de espera](../index.html#planes) y empezamos juntas.

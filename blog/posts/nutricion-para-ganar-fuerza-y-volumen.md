@@ -44,4 +44,4 @@ Una estrategia nutricional bien planificada es esencial para maximizar tus ganan
 
 ---
 
-¿Quieres un plan nutricional personalizado para tus objetivos de fuerza? [Reserva tu primera cita aquí](https://calendar.google.com) y empezamos juntas.
+¿Quieres un plan nutricional personalizado para tus objetivos de fuerza? [Apúntate a la lista de espera](../index.html#planes) y empezamos juntas.

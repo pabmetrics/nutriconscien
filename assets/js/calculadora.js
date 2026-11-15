@@ -14,8 +14,8 @@ function calcular() {
   const objetivo  = document.querySelector('input[name="objetivo"]:checked').value;
   const errorEl   = document.getElementById('calcError');
 
-  if (!edad || !peso || !altura || edad < 15 || peso < 30 || altura < 100) {
-    errorEl.textContent = 'Por favor, rellena todos los campos correctamente.';
+  if (!edad || !peso || !altura || edad < 18 || edad > 100 || peso < 30 || altura < 100) {
+    errorEl.textContent = 'Por favor, rellena edad (18 o más), peso y altura correctamente.';
     return;
   }
   errorEl.textContent = '';
@@ -30,11 +30,23 @@ function calcular() {
 
   const tdee = tmb * actividad;
 
-  let calObjetivo, labelObjetivo, descObjetivo;
+  let calObjetivo, labelObjetivo, descObjetivo, avisoObjetivo = '';
   if (objetivo === 'deficit') {
-    calObjetivo  = tdee - 500;
+    // Déficit de hasta 500 kcal, sin bajar del metabolismo basal ni de un mínimo absoluto.
+    const minimo = Math.max(tmb, sexo === 'mujer' ? 1200 : 1500);
+    calObjetivo  = Math.max(tdee - 500, minimo);
     labelObjetivo = 'Calorías para perder peso';
-    descObjetivo  = 'Déficit de 500 kcal/día. Pérdida estimada de ~0.5 kg/semana de forma saludable.';
+    if (calObjetivo > tdee - 500) {
+      descObjetivo  = 'Déficit moderado ajustado a tu caso.';
+      avisoObjetivo = 'Con tus datos, un déficit de 500 kcal te dejaría por debajo de un mínimo seguro, así que lo hemos limitado. '
+        + (calObjetivo >= tdee
+          ? 'Tu gasto ya está cerca de ese mínimo: en tu caso es mejor aumentar la actividad que comer menos.'
+          : 'La pérdida será más lenta, pero sostenible.')
+        + ' Te recomendamos hacerlo con supervisión profesional.';
+      calObjetivo = Math.min(calObjetivo, tdee);
+    } else {
+      descObjetivo  = 'Déficit de 500 kcal/día. Pérdida estimada de ~0,5 kg/semana de forma saludable.';
+    }
   } else if (objetivo === 'mantenimiento') {
     calObjetivo  = tdee;
     labelObjetivo = 'Calorías para mantenimiento';
@@ -58,6 +70,9 @@ function calcular() {
   document.getElementById('resObjetivoLabel').textContent = labelObjetivo;
   document.getElementById('resObjetivo').textContent    = Math.round(calObjetivo) + ' kcal';
   document.getElementById('resObjetivoDesc').textContent = descObjetivo;
+  const avisoEl = document.getElementById('resObjetivoAviso');
+  avisoEl.textContent = avisoObjetivo;
+  avisoEl.style.display = avisoObjetivo ? 'block' : 'none';
   document.getElementById('resProt').textContent        = proteinas + 'g';
   document.getElementById('resCarbs').textContent       = carbohidratos + 'g';
   document.getElementById('resFat').textContent         = grasas + 'g';

@@ -48,4 +48,4 @@ La nutrición en el pádel no es un extra, es parte del entrenamiento. Cuidar lo
 
 ---
 
-¿Quieres un plan nutricional personalizado para tu deporte? [Reserva tu primera cita aquí](https://calendar.google.com) y empezamos juntas.
+¿Quieres un plan nutricional personalizado para tu deporte? [Apúntate a la lista de espera](../index.html#planes) y empezamos juntas.

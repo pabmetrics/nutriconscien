@@ -42,4 +42,4 @@ Comer carbohidratos por la noche no es intrínsecamente malo ni necesariamente c
 
 ---
 
-¿Quieres un plan nutricional personalizado? [Reserva tu primera cita aquí](https://calendar.google.com) y empezamos juntas.
+¿Quieres un plan nutricional personalizado? [Apúntate a la lista de espera](../index.html#planes) y empezamos juntas.

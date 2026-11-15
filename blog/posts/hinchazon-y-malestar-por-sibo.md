@@ -53,4 +53,4 @@ Si sospechas que el SIBO está afectando tu bienestar, en **Nutriconscien** pode
 
 ---
 
-¿Quieres empezar a mejorar tu salud digestiva? [Reserva tu primera cita aquí](https://calendar.google.com) y empezamos juntas.
+¿Quieres empezar a mejorar tu salud digestiva? [Apúntate a la lista de espera](../index.html#planes) y empezamos juntas.

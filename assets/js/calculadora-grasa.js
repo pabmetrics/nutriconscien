@@ -20,6 +20,14 @@ const RANGOS_IMC = {
   obesidad:  [30, 100]
 };
 
+// CUN-BAE (Gómez-Ambrosi et al., Diabetes Care 2012). sexo: 0 hombre, 1 mujer.
+function estimarGrasaCunBae(edad, imc, sexo) {
+  const s = sexo === 'mujer' ? 1 : 0;
+  const pct = -44.988 + 0.503 * edad + 10.689 * s + 3.172 * imc - 0.026 * imc * imc
+    + 0.181 * imc * s - 0.02 * imc * edad - 0.005 * imc * imc * s + 0.00021 * imc * imc * edad;
+  return Math.min(Math.max(pct, 3), 70);
+}
+
 function clasificarGrasa(valor, sexo) {
   const r = RANGOS_GRASA[sexo];
   if (valor < r.normal[0])    return { label: 'Bajo', clase: 'bajo' };
@@ -57,11 +65,16 @@ function calcular() {
   const edad   = parseFloat(document.getElementById('edad').value);
   const peso   = parseFloat(document.getElementById('peso').value);
   const altura = parseFloat(document.getElementById('altura').value);
-  const grasa  = parseFloat(document.getElementById('grasa').value);
+  const grasaTxt = document.getElementById('grasa').value.trim();
   const errorEl = document.getElementById('calcError');
 
-  if (!edad || !peso || !altura || !grasa || peso < 30 || altura < 100 || grasa < 3 || grasa > 70) {
-    errorEl.textContent = 'Por favor, rellena todos los campos correctamente.';
+  if (!edad || !peso || !altura || edad < 18 || edad > 100 || peso < 30 || altura < 100) {
+    errorEl.textContent = 'Por favor, rellena edad (18 o más), peso y altura correctamente.';
+    return;
+  }
+  const grasaMedida = grasaTxt === '' ? null : parseFloat(grasaTxt);
+  if (grasaMedida !== null && (isNaN(grasaMedida) || grasaMedida < 3 || grasaMedida > 70)) {
+    errorEl.textContent = 'El porcentaje de grasa debe estar entre 3 y 70 (o déjalo vacío para estimarlo).';
     return;
   }
   errorEl.textContent = '';
@@ -69,6 +82,13 @@ function calcular() {
   // IMC
   const alturaM = altura / 100;
   const imc = peso / (alturaM * alturaM);
+
+  // % de grasa: el medido o, si no hay, estimación CUN-BAE
+  const estimada = grasaMedida === null;
+  const grasa = estimada ? estimarGrasaCunBae(edad, imc, sexo) : grasaMedida;
+  document.getElementById('resFatOrigen').textContent = estimada
+    ? 'Estimado con la fórmula CUN-BAE a partir de tu edad, sexo e IMC. Es orientativo: una medición (bioimpedancia, pliegues) es más precisa.'
+    : 'Según el porcentaje que has introducido.';
 
   // Clasificaciones
   const clasGrasa = clasificarGrasa(grasa, sexo);

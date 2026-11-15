@@ -49,4 +49,4 @@ Una buena estrategia nutricional precompetición no es complicada, pero sí requ
 
 ---
 
-¿Quieres un plan nutricional personalizado para tu deporte? [Reserva tu primera cita aquí](https://calendar.google.com) y empezamos juntas.
+¿Quieres un plan nutricional personalizado para tu deporte? [Apúntate a la lista de espera](../index.html#planes) y empezamos juntas.

@@ -54,4 +54,4 @@ La conexión entre nutrición y ciclo menstrual es profunda. Adaptar tu alimenta
 
 ---
 
-¿Quieres un plan nutricional personalizado? [Reserva tu primera cita aquí](https://calendar.google.com) y empezamos juntas.
+¿Quieres un plan nutricional personalizado? [Apúntate a la lista de espera](../index.html#planes) y empezamos juntas.

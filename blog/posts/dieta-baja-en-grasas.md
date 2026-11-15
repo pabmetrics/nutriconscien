@@ -44,4 +44,4 @@ Las dietas bajas en grasa pueden ser útiles en algunos contextos de salud, pero
 
 ---
 
-¿Quieres un plan nutricional personalizado? [Reserva tu primera cita aquí](https://calendar.google.com) y empezamos juntas.
+¿Quieres un plan nutricional personalizado? [Apúntate a la lista de espera](../index.html#planes) y empezamos juntas.

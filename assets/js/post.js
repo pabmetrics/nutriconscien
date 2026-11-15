@@ -7,7 +7,9 @@ fetch('../blog/posts.json')
     const meta = posts.find(p => p.slug === slug);
     if (!meta) { location.href = '../blog.html'; return; }
 
-    document.title = `${meta.title} – Nutriconscien`;
+    document.title = `${meta.title} – Nuvona`;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute('content', meta.excerpt);
     document.getElementById('postTitle').textContent = meta.title;
     document.getElementById('postCategory').textContent = meta.category;
     document.getElementById('postDate').textContent = new Date(meta.date)

@@ -46,4 +46,4 @@ Cocinar de forma más saludable no significa sacrificar el placer de comer. Con 
 
 ---
 
-¿Quieres aprender a crear tu plan de alimentación personalizado? [Reserva tu primera cita aquí](https://calendar.google.com) y empezamos juntas.
+¿Quieres aprender a crear tu plan de alimentación personalizado? [Apúntate a la lista de espera](../index.html#planes) y empezamos juntas.
