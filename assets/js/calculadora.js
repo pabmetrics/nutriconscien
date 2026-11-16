@@ -20,50 +20,49 @@ function calcular() {
   }
   errorEl.textContent = '';
 
-  // Harris-Benedict revisada (Roza & Shizgal, 1984)
-  let tmb;
-  if (sexo === 'mujer') {
-    tmb = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * edad);
-  } else {
-    tmb = 88.362 + (13.397 * peso) + (4.799 * altura) - (5.677 * edad);
-  }
-
+  // Mismas reglas que el plan (nuvona-app/api/app/servicios/nutricion.py), que son las de Ana:
+  // Mifflin-St Jeor, −10 % para perder, +20 % para ganar, y nunca por debajo del basal ni de 1200/1500 kcal.
+  const tmb = 10 * peso + 6.25 * altura - 5 * edad + (sexo === 'mujer' ? -161 : 5);
   const tdee = tmb * actividad;
-
-  let calObjetivo, labelObjetivo, descObjetivo, avisoObjetivo = '';
+  const minimo = Math.max(tmb, sexo === 'mujer' ? 1200 : 1500);
+  const factor = { deficit: 0.9, mantenimiento: 1, volumen: 1.2 }[objetivo];
+  let calObjetivo = tdee * factor;
+  let labelObjetivo, descObjetivo, avisoObjetivo = '';
+  if (calObjetivo < minimo) {
+    calObjetivo = minimo;
+    avisoObjetivo = 'Con tus datos, el objetivo te dejaría por debajo de un mínimo seguro, así que lo hemos limitado. '
+      + (objetivo === 'deficit' && minimo >= tdee
+        ? 'Tu gasto ya está cerca de ese mínimo: en tu caso es mejor aumentar la actividad que comer menos.'
+        : 'La pérdida será más lenta, pero sostenible.')
+      + ' Te recomendamos hacerlo con supervisión profesional.';
+  }
   if (objetivo === 'deficit') {
-    // Déficit de hasta 500 kcal, sin bajar del metabolismo basal ni de un mínimo absoluto.
-    const minimo = Math.max(tmb, sexo === 'mujer' ? 1200 : 1500);
-    calObjetivo  = Math.max(tdee - 500, minimo);
+    calObjetivo = Math.min(calObjetivo, tdee);
     labelObjetivo = 'Calorías para perder peso';
-    if (calObjetivo > tdee - 500) {
-      descObjetivo  = 'Déficit moderado ajustado a tu caso.';
-      avisoObjetivo = 'Con tus datos, un déficit de 500 kcal te dejaría por debajo de un mínimo seguro, así que lo hemos limitado. '
-        + (calObjetivo >= tdee
-          ? 'Tu gasto ya está cerca de ese mínimo: en tu caso es mejor aumentar la actividad que comer menos.'
-          : 'La pérdida será más lenta, pero sostenible.')
-        + ' Te recomendamos hacerlo con supervisión profesional.';
-      calObjetivo = Math.min(calObjetivo, tdee);
-    } else {
-      descObjetivo  = 'Déficit de 500 kcal/día. Pérdida estimada de ~0,5 kg/semana de forma saludable.';
-    }
+    descObjetivo = avisoObjetivo ? 'Déficit ajustado a tu caso.' : 'Un 10 % menos que tu gasto diario: pérdida gradual y sostenible.';
   } else if (objetivo === 'mantenimiento') {
-    calObjetivo  = tdee;
     labelObjetivo = 'Calorías para mantenimiento';
-    descObjetivo  = 'Ingesta igual a tu gasto total. Mantiene tu peso actual estable.';
+    descObjetivo = 'Ingesta igual a tu gasto total. Mantiene tu peso actual estable.';
   } else {
-    calObjetivo  = tdee + 300;
     labelObjetivo = 'Calorías para ganar músculo';
-    descObjetivo  = 'Superávit de 300 kcal/día. Favorece la ganancia muscular minimizando el aumento de grasa.';
+    descObjetivo = 'Un 20 % más que tu gasto diario, para acompañar el entrenamiento de fuerza.';
   }
 
-  // Macros orientativos sobre las calorías objetivo
-  const proteinas    = Math.round(peso * 1.8);
-  const calProtein   = proteinas * 4;
-  const calFat       = Math.round(calObjetivo * 0.30);
-  const grasas       = Math.round(calFat / 9);
-  const calCarbs     = calObjetivo - calProtein - calFat;
-  const carbohidratos = Math.round(calCarbs / 4);
+  // Macros: reparto de Ana por comida (4 comidas: desayuno 25 %, comida 37,5 %, merienda 12,5 %, cena 25 %),
+  // cada una con su % de hidratos / proteínas / grasas.
+  const REPARTO = [[0.25, 50, 20, 30], [0.375, 50, 25, 25], [0.125, 60, 20, 20], [0.25, 30, 30, 40]];
+  let gHC = 0, gProt = 0, gGrasa = 0;
+  REPARTO.forEach(([parte, hc, pr, gr]) => {
+    const k = calObjetivo * parte;
+    gHC += k * hc / 100 / 4; gProt += k * pr / 100 / 4; gGrasa += k * gr / 100 / 9;
+  });
+  const proteinas = Math.round(gProt);
+  const carbohidratos = Math.round(gHC);
+  const grasas = Math.round(gGrasa);
+  const pct = g => Math.round(g / calObjetivo * 100);
+  document.getElementById('pctProt').textContent = `~${pct(gProt * 4)} % de las calorías`;
+  document.getElementById('pctCarbs').textContent = `~${pct(gHC * 4)} % de las calorías`;
+  document.getElementById('pctFat').textContent = `~${pct(gGrasa * 9)} % de las calorías`;
 
   document.getElementById('resTMB').textContent         = Math.round(tmb) + ' kcal';
   document.getElementById('resTDEE').textContent        = Math.round(tdee) + ' kcal';

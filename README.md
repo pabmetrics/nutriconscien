@@ -16,7 +16,7 @@ HTML, CSS y JS estáticos, sin build ni dependencias.
 | `nosotros.html` | Quiénes somos (Ana, misión y pilares) |
 | `blog.html` + `blog/post.html` | Listado y página de artículo. También tiene la newsletter (Brevo) |
 | `blog/posts.json` + `blog/posts/*.md` | Artículos en Markdown (se pintan en el navegador con `marked`) |
-| `calculadora-calorias.html` | Metabolismo basal (Harris-Benedict revisada), gasto diario y calorías/macros orientativos |
+| `calculadora-calorias.html` | Metabolismo basal (Mifflin-St Jeor, reglas de Ana, iguales que el plan), gasto diario y calorías/macros orientativos |
 | `calculadora-grasa-corporal.html` | IMC y % de grasa (medido o estimado con CUN-BAE) |
 | `legal.html` | Aviso legal, privacidad y cookies |
 | `suscripcion-confirmada.html` | Página a la que vuelve Brevo tras confirmar la newsletter |

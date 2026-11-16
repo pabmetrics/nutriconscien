@@ -85,6 +85,18 @@ function mostrarFeedback(el, texto, ok) {
   el.textContent = texto;
 }
 
+// Con la API de Nuvona publicada (<meta name="nuvona-api" content="https://...">), la lista de espera se guarda
+// en su base de datos y Ana la ve en el panel. Sin esa meta (hoy), se sigue enviando por EmailJS.
+const CLAVE_PLAN = { 'Plan 4 semanas': 'plan_4_semanas', 'Coach': 'coach', 'Coach + Ana': 'coach_ana', 'Premium': 'premium' };
+function enviarAlta(nombre, email, plan) {
+  const api = document.querySelector('meta[name="nuvona-api"]')?.content;
+  if (!api) return emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE_LISTA, { nombre, email, plan });
+  return fetch(`${api}/publico/lista-espera`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nombre, email, plan: CLAVE_PLAN[plan] || 'indeciso', acepto_privacidad: true }),
+  }).then(r => { if (!r.ok) throw new Error(String(r.status)); });
+}
+
 function enviarListaEspera(e) {
   e.preventDefault();
   const form = e.target;
@@ -102,7 +114,7 @@ function enviarListaEspera(e) {
 
   btn.textContent = 'Enviando...';
   btn.disabled = true;
-  emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE_LISTA, { nombre, email, plan })
+  enviarAlta(nombre, email, plan)
     .then(() => {
       mostrarFeedback(feedback, '✓ ¡Listo! Te avisaremos cuando se abra el siguiente grupo.', true);
       form.reset();

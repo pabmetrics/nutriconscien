@@ -45,7 +45,7 @@
       <h1 class="tool-hero__title">Calculadora de Calorías Diarias</h1>
       <p class="tool-hero__subtitle">
         Calcula tu metabolismo basal (TMB) y tus necesidades calóricas totales según tu nivel de actividad
-        usando la ecuación de Harris-Benedict revisada.
+        con la ecuación de Mifflin-St Jeor y los mismos criterios que usa nuestra nutricionista en los planes.
       </p>
     </div>
   </section>
@@ -209,24 +209,24 @@
               <div class="macro-card macro-card--protein">
                 <p class="macro-card__label">Proteínas</p>
                 <p class="macro-card__value" id="resProt">—g</p>
-                <p class="macro-card__sub">1.8 g/kg de peso</p>
+                <p class="macro-card__sub" id="pctProt">—</p>
               </div>
               <div class="macro-card macro-card--carbs">
                 <p class="macro-card__label">Carbohidratos</p>
                 <p class="macro-card__value" id="resCarbs">—g</p>
-                <p class="macro-card__sub">~45% de las calorías</p>
+                <p class="macro-card__sub" id="pctCarbs">—</p>
               </div>
               <div class="macro-card macro-card--fat">
                 <p class="macro-card__label">Grasas</p>
                 <p class="macro-card__value" id="resFat">—g</p>
-                <p class="macro-card__sub">~30% de las calorías</p>
+                <p class="macro-card__sub" id="pctFat">—</p>
               </div>
             </div>
           </div>
 
           <!-- DISCLAIMER -->
           <div class="calc-disclaimer">
-            <p>⚠️ Estos valores son una <strong>estimación orientativa</strong> basada en la ecuación de Harris-Benedict revisada (Roza & Shizgal, 1984). Para un plan nutricional adaptado a ti, consulta con una profesional.</p>
+            <p>⚠️ Estos valores son una <strong>estimación orientativa</strong> basada en la ecuación de Mifflin-St Jeor (1990), con 4 comidas al día. Para un plan nutricional adaptado a ti, consulta con una profesional.</p>
           </div>
 
           <button onclick="abrirListaEspera()" class="btn btn--primary" style="width:100%;text-align:center;margin-top:8px;">
@@ -244,7 +244,7 @@
     <div class="container">
       <div class="section-header">
         <p class="section-eyebrow">¿Cómo funciona?</p>
-        <h2 class="section-title">La ecuación de Harris-Benedict</h2>
+        <h2 class="section-title">La ecuación de Mifflin-St Jeor</h2>
       </div>
       <div class="info-grid">
         <div class="info-card">
@@ -260,7 +260,7 @@
         <div class="info-card">
           <div class="info-card__num">03</div>
           <h3>Ajuste según objetivo</h3>
-          <p>Según si quieres perder peso (déficit de 500 kcal), mantenerte o ganar músculo (superávit de 300 kcal), ajustamos las calorías objetivo.</p>
+          <p>Para perder peso restamos un 10 %; para ganar músculo sumamos un 20 %. Nunca bajamos de tu metabolismo basal ni de 1200 kcal (mujeres) o 1500 kcal (hombres).</p>
         </div>
       </div>
     </div>
