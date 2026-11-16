@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /cuenta.html
+Disallow: /mi-plan.html
+Disallow: /index-nuvona.html
+Disallow: /index-v1-backup.html
+Disallow: /index-nutriconscien-backup.html
+Disallow: /landing-v1.html
+Disallow: /landing-v2.html
+Disallow: /landing-v3.html
+Sitemap: https://nuvida.es/sitemap.xml

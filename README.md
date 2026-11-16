@@ -33,6 +33,20 @@ HTML, CSS y JS estáticos, sin build ni dependencias.
 - Dirección de la API: `<meta name="nuvida-api" content="https://…">` en la página; si no está, `localhost:8000` en local o el mismo host en el puerto 8503 (demo del mini PC). **Al publicar, añadir la meta con la URL real.**
 - Todavía no están enlazadas desde el menú: se enlazarán cuando la API esté publicada.
 
+## Recetas (páginas estáticas)
+
+`recetas.html`, `recetas/*.html`, `sitemap.xml` y `robots.txt` **no se editan a mano**: los genera
+`nuvida-app/api/scripts/generar_web_recetas.py` a partir del recetario, solo con las recetas que Ana ha publicado
+en el panel (con sus macros de BEDCA y datos estructurados de schema.org para Google). Para actualizarlas:
+
+```bash
+cd ~/proyectos/nuvida-app/api
+python -m scripts.exportar_recetario      # base de datos → recetario/ (commit en nuvida-app)
+python -m scripts.generar_web_recetas     # recetario/ → páginas de esta web (commit aquí)
+```
+
+Cuando haya recetas publicadas, añadir «Recetas» al menú y al pie.
+
 ## Verla en local
 
 ```bash
