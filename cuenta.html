@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu cuenta – Nuvona</title>
+  <meta name="description" content="Entra en tu cuenta de Nuvona o crea una nueva." />
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/nuvona.css" />
+  <link rel="stylesheet" href="assets/css/cuenta.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+Telugu:wght@700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo nuvona-wordmark">Nuvona</a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html#como-funciona" class="nav__link">Cómo funciona</a></li>
+          <li><a href="index.html#planes" class="nav__link">Planes</a></li>
+          <li><a href="nosotros.html" class="nav__link">Nosotros</a></li>
+          <li><a href="blog.html" class="nav__link">Blog</a></li>
+        </ul>
+      </nav>
+      <button onclick="abrirListaEspera()" class="btn btn--primary header__cta">Apúntate</button>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="zona">
+    <div class="container">
+      <div class="tarjeta tarjeta--centro" id="caja">
+        <div class="pestanas" role="tablist">
+          <button role="tab" data-vista="entrar" aria-selected="true">Entrar</button>
+          <button role="tab" data-vista="registro" aria-selected="false">Crear cuenta</button>
+        </div>
+
+        <form id="fEntrar" data-vista="entrar" novalidate>
+          <label class="campo"><span>Email</span><input type="email" name="email" autocomplete="username" required></label>
+          <label class="campo"><span>Contraseña</span><input type="password" name="password" autocomplete="current-password" required></label>
+          <button class="btn btn--primary boton-ancho" type="submit">Entrar</button>
+          <p style="margin-top:14px;text-align:center"><button type="button" class="enlace" data-ir="olvido">He olvidado mi contraseña</button></p>
+        </form>
+
+        <form id="fRegistro" data-vista="registro" hidden novalidate>
+          <label class="campo"><span>Nombre</span><input name="nombre" autocomplete="given-name" required maxlength="120"></label>
+          <label class="campo"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+          <label class="campo"><span>Contraseña</span><input type="password" name="password" autocomplete="new-password" minlength="10" required><small>Al menos 10 caracteres.</small></label>
+          <label class="form-consent"><input type="checkbox" name="terminos" required> <span>Acepto el <a href="legal.html#aviso-legal" target="_blank">aviso legal y las condiciones</a>.</span></label>
+          <label class="form-consent"><input type="checkbox" name="privacidad" required> <span>He leído la <a href="legal.html#privacidad" target="_blank">política de privacidad</a>.</span></label>
+          <button class="btn btn--primary boton-ancho" type="submit" style="margin-top:12px">Crear cuenta</button>
+        </form>
+
+        <form id="fOlvido" data-vista="olvido" hidden novalidate>
+          <h2>Cambiar la contraseña</h2>
+          <p>Te enviaremos un enlace a tu email para poner una contraseña nueva.</p>
+          <label class="campo"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+          <button class="btn btn--primary boton-ancho" type="submit">Enviar enlace</button>
+          <p style="margin-top:14px;text-align:center"><button type="button" class="enlace" data-ir="entrar">Volver</button></p>
+        </form>
+
+        <form id="fReset" data-vista="reset" hidden novalidate>
+          <h2>Contraseña nueva</h2>
+          <label class="campo"><span>Contraseña nueva</span><input type="password" name="password" autocomplete="new-password" minlength="10" required><small>Al menos 10 caracteres.</small></label>
+          <button class="btn btn--primary boton-ancho" type="submit">Guardar contraseña</button>
+        </form>
+
+        <p class="mensaje" id="mensaje" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <p class="footer__tagline">La nutrición que tu cuerpo entiende</p>
+      </div>
+      <div class="footer__links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Herramientas</h4>
+        <ul>
+          <li><a href="calculadora-calorias.html">Calculadora de calorías</a></li>
+          <li><a href="calculadora-grasa-corporal.html">Calculadora de grasa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>© 2026 Nuvona. Todos los derechos reservados.</p>
+        <nav class="footer__legal" aria-label="Información legal">
+          <a href="legal.html#aviso-legal">Aviso legal</a>
+          <a href="legal.html#privacidad">Privacidad</a>
+          <a href="legal.html#cookies">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="assets/js/lista-espera.js"></script>
+  <script src="assets/js/nuvona-api.js"></script>
+  <script src="assets/js/cuenta.js"></script>
+</body>
+</html>

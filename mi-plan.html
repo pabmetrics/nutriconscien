@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu plan – Nuvona</title>
+  <meta name="description" content="Tu plan de Nuvona: perfil, menú de la semana, lista de la compra y seguimiento." />
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/nuvona.css" />
+  <link rel="stylesheet" href="assets/css/cuenta.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+Telugu:wght@700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo nuvona-wordmark">Nuvona</a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html#como-funciona" class="nav__link">Cómo funciona</a></li>
+          <li><a href="index.html#planes" class="nav__link">Planes</a></li>
+          <li><a href="nosotros.html" class="nav__link">Nosotros</a></li>
+          <li><a href="blog.html" class="nav__link">Blog</a></li>
+        </ul>
+      </nav>
+      <button onclick="abrirListaEspera()" class="btn btn--primary header__cta">Apúntate</button>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="zona">
+    <div class="container">
+      <div class="acciones" style="justify-content:space-between;align-items:baseline">
+        <h1 class="zona__titulo" id="saludo">Tu plan</h1>
+        <button class="enlace" id="salir" type="button">Salir</button>
+      </div>
+      <p class="zona__sub" id="subtitulo"></p>
+      <p class="mensaje" id="mensaje" role="status" aria-live="polite"></p>
+      <div id="contenido"><p>Cargando…</p></div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <p class="footer__tagline">La nutrición que tu cuerpo entiende</p>
+      </div>
+      <div class="footer__links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Herramientas</h4>
+        <ul>
+          <li><a href="calculadora-calorias.html">Calculadora de calorías</a></li>
+          <li><a href="calculadora-grasa-corporal.html">Calculadora de grasa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>© 2026 Nuvona. Todos los derechos reservados.</p>
+        <nav class="footer__legal" aria-label="Información legal">
+          <a href="legal.html#aviso-legal">Aviso legal</a>
+          <a href="legal.html#privacidad">Privacidad</a>
+          <a href="legal.html#cookies">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="assets/js/lista-espera.js"></script>
+  <script src="assets/js/nuvona-api.js"></script>
+  <script src="assets/js/mi-plan.js"></script>
+</body>
+</html>

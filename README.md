@@ -24,6 +24,15 @@ HTML, CSS y JS estáticos, sin build ni dependencias.
 | `assets/js/lista-espera.js` | Modal de lista de espera común a todas las páginas (lo crea él mismo) |
 | `assets/js/main.js` | Menú móvil, sombra de la cabecera y animación de entrada de tarjetas |
 
+## Zona de cliente (conectada a la API)
+
+`cuenta.html` y `mi-plan.html` hablan con la API de Nuvona (repo `nuvona-app`) mediante `assets/js/nuvona-api.js`:
+
+- `cuenta.html`: entrar, crear cuenta, olvido de contraseña. Los enlaces de los emails llegan como `cuenta.html#verificar=…` y `cuenta.html#reset=…` (el token va tras `#` para que no llegue al servidor de la web, y se borra de la barra al leerlo).
+- `mi-plan.html`: perfil y cribado, objetivos, elegir plan, menú de la semana (con la receta de cada comida), lista de la compra, PDF, check-in semanal, descargar y borrar mis datos.
+- Dirección de la API: `<meta name="nuvona-api" content="https://…">` en la página; si no está, `localhost:8000` en local o el mismo host en el puerto 8503 (demo del mini PC). **Al publicar, añadir la meta con la URL real.**
+- Todavía no están enlazadas desde el menú: se enlazarán cuando la API esté publicada.
+
 ## Verla en local
 
 ```bash
@@ -73,6 +82,7 @@ Las claves de EmailJS y Turnstile que aparecen son **públicas** (van en el nave
 - [ ] Redes sociales del pie: enlazar cuentas reales o quitar los iconos.
 - [ ] Confirmar precios (los actuales son provisionales).
 - [ ] Decidir qué hacer con las páginas antiguas.
+- [ ] API publicada: `<meta name="nuvona-api">` en `cuenta.html` y `mi-plan.html`, enlace «Mi cuenta» en el menú y el dominio en `ALLOWED_ORIGINS` de la API.
 
 ## Páginas antiguas
 
