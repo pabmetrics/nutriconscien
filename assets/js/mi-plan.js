@@ -2,7 +2,7 @@
 'use strict';
 
 (() => {
-  const { pedir, sesion, esc } = NuvonaAPI;
+  const { pedir, sesion, esc } = NuvidaAPI;
   if (!sesion.activa) { location.replace('cuenta.html'); return; }
 
   const $ = s => document.querySelector(s);
@@ -116,12 +116,12 @@
           <textarea name="notas" rows="3" maxlength="1500" placeholder="Ej.: me encanta el pescado, como a las 15:00, entreno por la tarde…">${esc(p.cuestionario?.notas)}</textarea></label>
 
         <h3>Tu salud</h3>
-        <p class="aviso-legal">Nuvona es un programa para personas adultas sanas. Si algo de esto te pasa, lo adecuado es una consulta con una dietista-nutricionista.</p>
+        <p class="aviso-legal">Nuvida es un programa para personas adultas sanas. Si algo de esto te pasa, lo adecuado es una consulta con una dietista-nutricionista.</p>
         <div class="cribado">${Object.entries(cribado.preguntas).map(([k, texto]) => `<div class="cribado__fila"><span>${esc(texto)}</span>
           <div class="opciones">${radio(`c_${k}`, 'no', p.cribado[k] === false ? 'no' : (p.cribado[k] ? 'si' : ''), 'No')}${radio(`c_${k}`, 'si', p.cribado[k] ? 'si' : '', 'Sí')}</div></div>`).join('')}</div>
 
         <label class="form-consent" style="margin-top:16px"><input type="checkbox" name="acepto_salud" required ${yo.perfil ? 'checked' : ''}>
-          <span>Doy mi consentimiento para que Nuvona trate estos datos de salud para calcular y preparar mi plan, como explica la <a href="legal.html#privacidad" target="_blank">política de privacidad</a>.</span></label>
+          <span>Doy mi consentimiento para que Nuvida trate estos datos de salud para calcular y preparar mi plan, como explica la <a href="legal.html#privacidad" target="_blank">política de privacidad</a>.</span></label>
         <div class="acciones"><button class="btn btn--primary" type="submit">${yo.perfil ? 'Guardar cambios' : 'Calcular mi plan'}</button>
           ${yo.perfil ? '<button class="btn btn--outline" type="button" id="cancelar">Cancelar</button>' : ''}</div>
       </form>`;
@@ -228,7 +228,7 @@
         $('#compraZona').innerHTML = `<h3>Lista de la compra</h3><ul class="compra">${filas.map(f => `<li><span>${esc(f.ingrediente)}</span><span>${num(f.gramos)} g</span></li>`).join('')}</ul>`;
       }, e.currentTarget));
       $('#pdf').addEventListener('click', e => accion(async () => {
-        descargar(await pedir(`/yo/menus/${menu.id}/pdf`, { respuesta: 'blob' }), `menu-nuvona-${menu.semana_inicio}.pdf`);
+        descargar(await pedir(`/yo/menus/${menu.id}/pdf`, { respuesta: 'blob' }), `menu-nuvida-${menu.semana_inicio}.pdf`);
       }, e.currentTarget));
     }
     $('#nuevoMenu')?.addEventListener('click', e => accion(async () => {
@@ -277,7 +277,7 @@
     $('#editar').addEventListener('click', () => accion(async () => { $('#subtitulo').textContent = 'Cambia lo que necesites.'; await pintarPerfil(); }));
     $('#exportar').addEventListener('click', e => accion(async () => {
       const datos = await pedir('/yo/datos');
-      descargar(new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' }), 'mis-datos-nuvona.json');
+      descargar(new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' }), 'mis-datos-nuvida.json');
     }, e.currentTarget));
     $('#borrar').addEventListener('click', e => {
       if (!confirm('¿Seguro? Se borrarán tu cuenta y todos tus datos (perfil, menús y seguimiento). No se puede deshacer.')) return;

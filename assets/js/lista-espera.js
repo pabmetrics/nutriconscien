@@ -85,11 +85,11 @@ function mostrarFeedback(el, texto, ok) {
   el.textContent = texto;
 }
 
-// Con la API de Nuvona publicada (<meta name="nuvona-api" content="https://...">), la lista de espera se guarda
+// Con la API de Nuvida publicada (<meta name="nuvida-api" content="https://...">), la lista de espera se guarda
 // en su base de datos y Ana la ve en el panel. Sin esa meta (hoy), se sigue enviando por EmailJS.
 const CLAVE_PLAN = { 'Plan 4 semanas': 'plan_4_semanas', 'Coach': 'coach', 'Coach + Ana': 'coach_ana', 'Premium': 'premium' };
 function enviarAlta(nombre, email, plan) {
-  const api = document.querySelector('meta[name="nuvona-api"]')?.content;
+  const api = document.querySelector('meta[name="nuvida-api"]')?.content;
   if (!api) return emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE_LISTA, { nombre, email, plan });
   return fetch(`${api}/publico/lista-espera`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },

@@ -1,11 +1,11 @@
-// Cliente de la API de Nuvona (repo nuvona-app). Común a cuenta.html y mi-plan.html.
+// Cliente de la API de Nuvida (repo nuvona-app). Común a cuenta.html y mi-plan.html.
 //
-// Dirección de la API: la de <meta name="nuvona-api" content="https://...">, si la página la tiene.
+// Dirección de la API: la de <meta name="nuvida-api" content="https://...">, si la página la tiene.
 // Si no: en local, http://localhost:8000; en el mini PC (demo), el mismo host en el puerto 8503.
 'use strict';
 
-const NuvonaAPI = (() => {
-  const meta = document.querySelector('meta[name="nuvona-api"]');
+const NuvidaAPI = (() => {
+  const meta = document.querySelector('meta[name="nuvida-api"]');
   const BASE = meta?.content
     || (['localhost', '127.0.0.1'].includes(location.hostname) ? 'http://localhost:8000' : `${location.protocol}//${location.hostname}:8503`);
 
@@ -18,11 +18,11 @@ const NuvonaAPI = (() => {
   };
 
   const sesion = {
-    get acceso() { return almacen.leer('nuvona_acceso'); },
-    get refresco() { return almacen.leer('nuvona_refresco'); },
-    get activa() { return Boolean(almacen.leer('nuvona_refresco')); },
-    guardar(t) { almacen.escribir('nuvona_acceso', t.acceso); almacen.escribir('nuvona_refresco', t.refresco); },
-    cerrar() { almacen.borrar('nuvona_acceso'); almacen.borrar('nuvona_refresco'); },
+    get acceso() { return almacen.leer('nuvida_acceso'); },
+    get refresco() { return almacen.leer('nuvida_refresco'); },
+    get activa() { return Boolean(almacen.leer('nuvida_refresco')); },
+    guardar(t) { almacen.escribir('nuvida_acceso', t.acceso); almacen.escribir('nuvida_refresco', t.refresco); },
+    cerrar() { almacen.borrar('nuvida_acceso'); almacen.borrar('nuvida_refresco'); },
   };
 
   function mensajeError(cuerpo) {
@@ -59,7 +59,7 @@ const NuvonaAPI = (() => {
     try {
       r = await fetch(`${BASE}${ruta}`, { method: metodo, headers: cab, body: datos === undefined ? undefined : JSON.stringify(datos) });
     } catch {
-      throw new Error('No hay conexión con Nuvona. Revisa tu conexión e inténtalo de nuevo.');
+      throw new Error('No hay conexión con Nuvida. Revisa tu conexión e inténtalo de nuevo.');
     }
     if (r.status === 401 && reintento && sesion.refresco && await renovar()) {
       return pedir(ruta, { metodo, datos, respuesta, reintento: false });

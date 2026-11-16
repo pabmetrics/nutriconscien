@@ -3,7 +3,7 @@
 'use strict';
 
 (() => {
-  const { pedir, sesion } = NuvonaAPI;
+  const { pedir, sesion } = NuvidaAPI;
   const msg = document.getElementById('mensaje');
   const formularios = document.querySelectorAll('#caja form');
   const pestanas = document.querySelector('.pestanas');
