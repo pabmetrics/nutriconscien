@@ -20,7 +20,7 @@ function calcular() {
   }
   errorEl.textContent = '';
 
-  // Mismas reglas que el plan (nuvona-app/api/app/servicios/nutricion.py), que son las de Ana:
+  // Mismas reglas que el plan (nuvida-app/api/app/servicios/nutricion.py), que son las de Ana:
   // Mifflin-St Jeor, −10 % para perder, +20 % para ganar, y nunca por debajo del basal ni de 1200/1500 kcal.
   const tmb = 10 * peso + 6.25 * altura - 5 * edad + (sexo === 'mujer' ? -161 : 5);
   const tdee = tmb * actividad;

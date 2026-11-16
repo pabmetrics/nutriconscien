@@ -1,4 +1,4 @@
-// Cliente de la API de Nuvida (repo nuvona-app). Común a cuenta.html y mi-plan.html.
+// Cliente de la API de Nuvida (repo nuvida-app). Común a cuenta.html y mi-plan.html.
 //
 // Dirección de la API: la de <meta name="nuvida-api" content="https://...">, si la página la tiene.
 // Si no: en local, http://localhost:8000; en el mini PC (demo), el mismo host en el puerto 8503.

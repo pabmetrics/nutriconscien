@@ -26,7 +26,7 @@ HTML, CSS y JS estáticos, sin build ni dependencias.
 
 ## Zona de cliente (conectada a la API)
 
-`cuenta.html` y `mi-plan.html` hablan con la API de Nuvida (repo `nuvona-app`) mediante `assets/js/nuvida-api.js`:
+`cuenta.html` y `mi-plan.html` hablan con la API de Nuvida (repo `nuvida-app`) mediante `assets/js/nuvida-api.js`:
 
 - `cuenta.html`: entrar, crear cuenta, olvido de contraseña. Los enlaces de los emails llegan como `cuenta.html#verificar=…` y `cuenta.html#reset=…` (el token va tras `#` para que no llegue al servidor de la web, y se borra de la barra al leerlo).
 - `mi-plan.html`: perfil y cribado, objetivos, elegir plan, menú de la semana (con la receta de cada comida), lista de la compra, PDF, check-in semanal, descargar y borrar mis datos.
