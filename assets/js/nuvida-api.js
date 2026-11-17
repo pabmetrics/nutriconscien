@@ -1,12 +1,12 @@
 // Cliente de la API de Nuvida (repo nuvida-app). Común a cuenta.html y mi-plan.html.
 //
-// Dirección de la API: la de <meta name="nuvida-api" content="https://...">, si la página la tiene.
-// Si no: en local, http://localhost:8000; en el mini PC (demo), el mismo host en el puerto 8503.
+// Dirección de la API: ver assets/js/config.js.
 'use strict';
 
 const NuvidaAPI = (() => {
+  // La dirección sale de assets/js/config.js (window.NUVIDA.api); la meta nuvida-api, si existe, manda.
   const meta = document.querySelector('meta[name="nuvida-api"]');
-  const BASE = meta?.content
+  const BASE = meta?.content || window.NUVIDA?.api
     || (['localhost', '127.0.0.1'].includes(location.hostname) ? 'http://localhost:8000' : `${location.protocol}//${location.hostname}:8503`);
 
   // La sesión se guarda en localStorage para no tener que entrar cada vez (si el navegador lo permite).

@@ -47,6 +47,20 @@ python -m scripts.generar_web_recetas     # recetario/ → páginas de esta web 
 
 Cuando haya recetas publicadas, añadir «Recetas» al menú y al pie.
 
+## Publicar en Hostinger (nuvida.es)
+
+La web se publica tal cual desde este repo (sin compilar nada) con el despliegue por Git de Hostinger:
+
+1. hPanel → **Sitios web** → `nuvida.es` → **Administrador de archivos**: vaciar `public_html` (Hostinger pone una página por defecto).
+2. hPanel → `nuvida.es` → **Avanzado → GIT**: repositorio `https://github.com/pabmetrics/nutriconscien.git`, rama `main`, directorio vacío (= `public_html`). Crear y pulsar **Desplegar**.
+3. En esa misma pantalla, **Despliegue automático**: copiar la URL del webhook y añadirla en GitHub → `nutriconscien` → Settings → Webhooks (evento *push*). Así cada commit se publica solo.
+4. hPanel → **Seguridad → SSL**: activar el certificado gratuito para `nuvida.es` y `www.nuvida.es`.
+5. Cloudflare Turnstile (newsletter) y EmailJS (lista de espera): añadir `nuvida.es` a los dominios permitidos.
+
+`.htaccess` fuerza HTTPS, redirige las páginas antiguas a la portada y oculta `.git` y este README.
+
+**Interruptores** (`assets/js/config.js`): `registroAbierto` y `listaEsperaEnApi` están apagados hasta aprobar los textos legales; la API tiene además su propio `REGISTRO_ABIERTO` en su `.env`. Para abrir: ponerlos a `true` aquí, `REGISTRO_ABIERTO=true` en la API y `nuvida.sh desplegar`.
+
 ## Verla en local
 
 ```bash
@@ -96,7 +110,8 @@ Las claves de EmailJS y Turnstile que aparecen son **públicas** (van en el nave
 - [x] Redes sociales del pie: Instagram y TikTok @nuvida.es, X @nuvida_es (17/11).
 - [ ] Confirmar precios (los actuales son provisionales).
 - [ ] Decidir qué hacer con las páginas antiguas.
-- [ ] API publicada: `<meta name="nuvida-api">` en `cuenta.html` y `mi-plan.html`, enlace «Mi cuenta» en el menú y el dominio en `ALLOWED_ORIGINS` de la API.
+- [x] API publicada (17/11) y web conectada por `assets/js/config.js`; «Mi cuenta» en el menú (visible al abrir el registro).
+- [ ] Textos legales nuevos aprobados → encender los interruptores de `config.js` y de la API.
 
 ## Páginas antiguas
 

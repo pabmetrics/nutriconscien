@@ -48,3 +48,10 @@ document.querySelectorAll('.service-card, .pricing-card, .nplan, .nstep, .loutco
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
 });
+
+// «Mi cuenta» en el menú: solo con el registro abierto o si ya hay sesión en este navegador.
+(() => {
+  let sesion = false;
+  try { sesion = Boolean(localStorage.getItem('nuvida_refresco')); } catch { /* sin almacenamiento */ }
+  if (window.NUVIDA?.registroAbierto || sesion) document.querySelectorAll('.nav-cuenta').forEach(el => { el.hidden = false; });
+})();

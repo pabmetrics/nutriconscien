@@ -5,9 +5,19 @@
 (() => {
   const { pedir, sesion } = NuvidaAPI;
   const msg = document.getElementById('mensaje');
-  const formularios = document.querySelectorAll('#caja form');
+  const formularios = () => document.querySelectorAll('#caja form');
   const pestanas = document.querySelector('.pestanas');
   let tokenReset = null;
+
+  // Mientras no se abran las cuentas (config.js), solo se puede entrar: nada de «Crear cuenta».
+  if (!window.NUVIDA?.registroAbierto) {
+    pestanas.querySelector('[data-vista="registro"]').remove();
+    document.getElementById('fRegistro').remove();
+    const aviso = document.createElement('p');
+    aviso.className = 'mensaje mensaje--info';
+    aviso.innerHTML = 'Todavía no abrimos cuentas nuevas. <button type="button" class="enlace" onclick="abrirListaEspera()">Apúntate a la lista de espera</button> y te avisamos con el primer grupo.';
+    document.getElementById('fEntrar').after(aviso);
+  }
 
   function aviso(texto, tipo = 'info') {
     msg.textContent = texto;
@@ -15,7 +25,7 @@
   }
 
   function mostrar(vista) {
-    formularios.forEach(f => { f.hidden = f.dataset.vista !== vista; });
+    formularios().forEach(f => { f.hidden = f.dataset.vista !== vista; });
     pestanas.hidden = !['entrar', 'registro'].includes(vista);
     pestanas.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.vista === vista)));
     aviso('');
@@ -48,7 +58,7 @@
     });
   });
 
-  document.getElementById('fRegistro').addEventListener('submit', e => {
+  document.getElementById('fRegistro')?.addEventListener('submit', e => {
     e.preventDefault();
     enviar(e.target, async d => {
       const r = await pedir('/auth/registro', { metodo: 'POST', datos: {
@@ -93,7 +103,7 @@
       mostrar('reset');
     } else if (sesion.activa) {
       location.href = 'mi-plan.html';
-    } else if (datos.has('registro')) {
+    } else if (datos.has('registro') && window.NUVIDA?.registroAbierto) {
       mostrar('registro');
     }
   }
