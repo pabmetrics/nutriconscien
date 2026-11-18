@@ -72,3 +72,5 @@ fieldset.campo { border: 0; padding: 0; }
 .nota-ana { background: var(--color-accent-light); border-radius: var(--radius); padding: 12px 14px; margin: 0 0 14px; }
 .aviso-legal { font-size: .82rem; color: var(--color-text-muted); margin-top: 12px; }
 [hidden] { display: none !important; }
+.compra__aviso { display: block; color: #8a5a00; font-size: .8rem; }
+.nota-ana ul { margin: 6px 0 0; padding-left: 18px; }

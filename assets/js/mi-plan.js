@@ -193,6 +193,8 @@
       const yaTocaOtro = siguiente - new Date() < 3 * 86400000;  // a partir del viernes se puede pedir el siguiente
       zona.innerHTML = `<div class="tarjeta"><h2>Menú de la semana del ${fecha(menu.semana_inicio)}</h2>
         ${menu.nota_nutricionista ? `<div class="nota-ana"><b>Nota de tu nutricionista:</b> ${esc(menu.nota_nutricionista)}</div>` : ''}
+        ${menu.avisos?.length ? `<div class="nota-ana"><b>Avisos para tu dieta.</b> Estos ingredientes son aptos para ti solo en ciertas versiones:
+          <ul>${menu.avisos.map(a => `<li><b>${esc(a.ingrediente)}</b> (${esc(a.restriccion)}): ${esc(a.aviso)}</li>`).join('')}</ul></div>` : ''}
         ${menu.objetivos.motivo_ajuste ? `<p class="mensaje mensaje--info">Ajuste de esta semana: ${esc(menu.objetivos.motivo_ajuste)}</p>` : ''}
         <div class="dias" role="tablist">${DIAS.map((d, i) => `<button role="tab" data-dia="${i}" aria-selected="false">${d.slice(0, 3)}</button>`).join('')}</div>
         <div id="diaMenu"></div>
@@ -225,7 +227,7 @@
       }, true);
       $('#compra').addEventListener('click', e => accion(async () => {
         const filas = await pedir(`/yo/menus/${menu.id}/compra`);
-        $('#compraZona').innerHTML = `<h3>Lista de la compra</h3><ul class="compra">${filas.map(f => `<li><span>${esc(f.ingrediente)}</span><span>${num(f.gramos)} g</span></li>`).join('')}</ul>`;
+        $('#compraZona').innerHTML = `<h3>Lista de la compra</h3><ul class="compra">${filas.map(f => `<li><span>${esc(f.ingrediente)}${(f.avisos || []).map(a => `<small class="compra__aviso">⚠ ${esc(a)}</small>`).join('')}</span><span>${num(f.gramos)} g</span></li>`).join('')}</ul>`;
       }, e.currentTarget));
       $('#pdf').addEventListener('click', e => accion(async () => {
         descargar(await pedir(`/yo/menus/${menu.id}/pdf`, { respuesta: 'blob' }), `menu-nuvida-${menu.semana_inicio}.pdf`);
