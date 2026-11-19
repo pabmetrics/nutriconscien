@@ -47,7 +47,8 @@
       $('#subtitulo').textContent = 'Para preparar tu plan necesitamos conocerte un poco. Son 3 minutos.';
       return pintarPerfil();
     }
-    $('#subtitulo').textContent = yo.plan ? `Tu plan: ${yo.plan.nombre} · activo hasta el ${fecha(yo.plan.periodo_fin)}` : '';
+    $('#subtitulo').textContent = yo.plan
+      ? `Tu plan: ${yo.plan.nombre} · ${yo.plan.cancelado ? 'cancelado, sigue activo hasta el' : 'activo hasta el'} ${fecha(yo.plan.periodo_fin)}` : '';
     const partes = [tarjetaObjetivos()];
     if (!yo.perfil.derivar) {
       if (yo.plan) partes.push('<div id="menuZona"><div class="tarjeta"><p>Cargando tu menú…</p></div></div>', tarjetaCheckin());
@@ -151,7 +152,10 @@
   async function pintarPlanes() {
     const planes = await pedir('/publico/planes');
     const zona = $('#planesZona');
-    zona.innerHTML = `<h2>Elige tu plan</h2><div class="planes-lista">${planes.map(p => `
+    zona.innerHTML = `<h2>Elige tu plan</h2>
+      <label class="form-consent" style="margin-bottom:12px"><input type="checkbox" id="inicioInmediato">
+        <span>Quiero empezar antes de que acaben los 14 días de desistimiento. Sé que, si desisto, pagaré la parte proporcional del servicio ya recibido (<a href="legal.html#condiciones" target="_blank">condiciones</a>).</span></label>
+      <div class="planes-lista">${planes.map(p => `
       <div class="plan-op"><div><b>${esc(p.nombre)}</b>
         <p>${p.con_revision ? 'Con revisión de nuestra nutricionista' : 'Automático'} · ${p.recurrente ? 'mensual' : 'pago único'}
         ${p.grupo ? ` · grupo «${esc(p.grupo.nombre)}» desde el ${fecha(p.grupo.fecha_inicio)}, ${p.grupo.plazas_libres} plazas` : ''}</p></div>
@@ -160,7 +164,11 @@
       <p class="aviso-legal">Precios en la portada. Al reservar te guardamos la plaza y te escribimos para el pago.</p>`;
     zona.addEventListener('click', e => {
       const b = e.target.closest('button');
-      if (b?.dataset.plan) accion(async () => { await pedir('/yo/inscripciones', { metodo: 'POST', datos: { plan: b.dataset.plan } }); await cargar(); }, b);
+      if (b?.dataset.plan) accion(async () => {
+        if (!$('#inicioInmediato').checked) throw new Error('Marca la casilla de inicio del servicio para poder reservar.');
+        await pedir('/yo/inscripciones', { metodo: 'POST', datos: { plan: b.dataset.plan, inicio_inmediato: true } });
+        await cargar();
+      }, b);
       if (b?.dataset.espera) accion(async () => {
         await pedir('/publico/lista-espera', { metodo: 'POST', datos: { nombre: yo.nombre, email: yo.email, plan: b.dataset.espera, acepto_privacidad: true } });
         aviso('Te hemos apuntado: te avisamos cuando abramos el siguiente grupo.', 'ok');
@@ -172,7 +180,8 @@
     const p = yo.pendiente;
     return `<div class="tarjeta"><h2>Plaza reservada: ${esc(p.nombre)}</h2>
       <p>${p.grupo ? `Entras en el grupo «${esc(p.grupo.nombre)}», que empieza el ${fecha(p.grupo.fecha_inicio)}. ` : ''}
-      Te escribiremos a <b>${esc(yo.email)}</b> para el pago. En cuanto esté, aquí tendrás tu menú.</p></div>`;
+      Te escribiremos a <b>${esc(yo.email)}</b> para el pago. En cuanto esté, aquí tendrás tu menú.</p>
+      <button class="btn btn--ghost" data-cancelar="1">Anular la reserva</button></div>`;
   }
 
   // ── Menú de la semana ──────────────────────────────────────────────────────
@@ -271,10 +280,24 @@
   // ── Mi cuenta ──────────────────────────────────────────────────────────────
   function tarjetaCuenta() {
     return `<div class="tarjeta"><h2>Mi cuenta</h2><p class="aviso-legal">${esc(yo.email)}</p>
+      ${yo.plan?.recurrente && !yo.plan.cancelado ? `<p class="aviso-legal">Plan ${esc(yo.plan.nombre)}: sin permanencia. Si lo cancelas, sigue activo hasta el ${fecha(yo.plan.periodo_fin)} y no se renueva.</p>` : ''}
       <div class="acciones"><button class="btn btn--outline" id="editar">Mis datos</button>
+        ${yo.plan?.recurrente && !yo.plan.cancelado ? '<button class="btn btn--ghost" data-cancelar="1">Cancelar mi plan</button>' : ''}
         <button class="btn btn--outline" id="exportar">Descargar mis datos</button>
         <button class="btn btn--ghost" id="borrar">Borrar mi cuenta</button></div></div>`;
   }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-cancelar]');
+    if (!b) return;
+    const texto = yo.plan ? `¿Cancelar tu plan? Seguirá activo hasta el ${fecha(yo.plan.periodo_fin)} y no se renovará.` : '¿Anular tu reserva de plaza?';
+    if (!confirm(texto)) return;
+    accion(async () => {
+      const r = await pedir('/yo/inscripciones/cancelar', { metodo: 'POST' });
+      await cargar();
+      aviso(r.hasta ? `Plan cancelado. Sigue activo hasta el ${fecha(r.hasta)}.` : 'Reserva anulada.', 'ok');
+    }, b);
+  });
+
   function enlazarCuenta() {
     $('#editar').addEventListener('click', () => accion(async () => { $('#subtitulo').textContent = 'Cambia lo que necesites.'; await pintarPerfil(); }));
     $('#exportar').addEventListener('click', e => accion(async () => {
