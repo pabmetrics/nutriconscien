@@ -41,7 +41,7 @@
   <main class="legal-page">
     <div class="container">
       <h1>Información legal</h1>
-      <p>Última actualización: <span class="pendiente">[FECHA DE PUBLICACIÓN]</span></p>
+      <p>Última actualización: 20 de noviembre de 2026</p>
 
       <!-- AVISO LEGAL -->
       <h2 id="aviso-legal">Aviso legal</h2>
@@ -68,39 +68,81 @@
 
       <h3>Qué datos tratamos y para qué</h3>
       <table>
-        <thead><tr><th>Formulario</th><th>Datos</th><th>Finalidad</th><th>Base legal</th></tr></thead>
+        <thead><tr><th>Qué</th><th>Datos</th><th>Para qué</th><th>Base legal</th></tr></thead>
         <tbody>
-          <tr><td>Lista de espera</td><td>Nombre, email y plan que te interesa</td><td>Avisarte cuando se abran plazas y saber qué planes interesan más</td><td>Tu consentimiento</td></tr>
-          <tr><td>Newsletter</td><td>Email</td><td>Enviarte consejos, recetas y novedades</td><td>Tu consentimiento (puedes darte de baja en cada envío)</td></tr>
-          <tr><td>Emails que nos envías</td><td>Tu email y lo que nos cuentes</td><td>Responder a tu consulta</td><td>Tu consentimiento</td></tr>
+          <tr><td>Lista de espera</td><td>Nombre, email y plan que te interesa</td><td>Avisarte cuando abramos plazas</td><td>Tu consentimiento</td></tr>
+          <tr><td>Newsletter</td><td>Email</td><td>Enviarte consejos y recetas</td><td>Tu consentimiento (baja en cada envío)</td></tr>
+          <tr><td>Tu cuenta</td><td>Nombre, email y contraseña (guardada cifrada, nunca en claro)</td><td>Darte acceso a tu plan</td><td>Ejecución del contrato</td></tr>
+          <tr><td><strong>Tu perfil de salud</strong></td><td>Sexo, fecha de nacimiento, altura, peso, actividad física, objetivo, número de comidas, dietas, alergias e intolerancias, alimentos que no tomas, respuestas a las preguntas de salud y lo que nos cuentes sobre tus gustos y horarios</td><td>Calcular tus objetivos y preparar tus menús</td><td><strong>Tu consentimiento explícito</strong> (art. 9.2.a del RGPD), que das con una casilla aparte. Sin estos datos no podemos prepararte el plan</td></tr>
+          <tr><td><strong>Tu seguimiento</strong></td><td>Peso, hambre, energía, cumplimiento del menú y notas de cada semana</td><td>Ajustar tu plan semana a semana</td><td>Tu consentimiento explícito</td></tr>
+          <tr><td>Tus menús</td><td>Menús, listas de la compra y notas de la nutricionista</td><td>Prestarte el servicio</td><td>Ejecución del contrato</td></tr>
+          <tr><td>Pagos</td><td>Nombre, plan, importe y fecha (no guardamos datos de tarjeta)</td><td>Cobrar y emitir facturas</td><td>Ejecución del contrato y obligación legal</td></tr>
+          <tr><td>Emails que nos envías</td><td>Tu email y lo que nos cuentes</td><td>Responderte</td><td>Tu consentimiento</td></tr>
         </tbody>
       </table>
-      <p>Las calculadoras funcionan en tu navegador: los datos que introduces (edad, peso, altura, etc.) <strong>no se envían ni se guardan</strong>.</p>
-      <p>Por ahora no tratamos datos de salud. Si en el futuro contratas un programa que los necesite, te pediremos un consentimiento explícito y aparte.</p>
+      <p>Los datos de salud son una categoría especial de datos. Solo los usamos para tu plan: nunca para publicidad, y nunca los vendemos ni los cedemos.</p>
+      <p>Las calculadoras de la web funcionan en tu navegador: lo que introduces en ellas <strong>no se envía ni se guarda</strong>.</p>
+
+      <h3>Cálculos, menús automáticos e inteligencia artificial</h3>
+      <p>Tus calorías, el reparto entre comidas y tus menús se calculan <strong>automáticamente</strong>, con fórmulas y reglas fijadas por nuestra dietista-nutricionista (ecuación de Mifflin-St Jeor, reparto por comidas y recetas con valores de la Base de Datos Española de Composición de Alimentos). <strong>No los decide una inteligencia artificial.</strong> Si respondes que sí a alguna de las preguntas de salud, el sistema no prepara un plan automático y te recomienda una consulta.</p>
+      <p>Estas decisiones no tienen efectos jurídicos sobre ti, pero tienes derecho a que una persona las revise: escríbenos y nuestra dietista-nutricionista revisará tu caso. En los planes Coach + Ana y Premium, ella revisa tu menú antes de que lo recibas.</p>
+      <p>Usamos inteligencia artificial solo como herramienta interna de gestión (organizar el trabajo y preparar borradores de recetas y textos que después revisa nuestra dietista-nutricionista). <strong>No introducimos tus datos de salud en herramientas de inteligencia artificial</strong> ni la usamos para tomar decisiones sobre ti.</p>
+
+      <h3>Quién accede a tus datos</h3>
+      <p>Nuestra dietista-nutricionista, sujeta a secreto profesional, cuando tu plan incluye revisión o cuando nos pides ayuda. Además, estos proveedores tratan datos por cuenta nuestra, con las garantías del RGPD:</p>
+      <ul>
+        <li><strong>Supabase</strong>: base de datos, en servidores de la Unión Europea (Fráncfort, Alemania).</li>
+        <li><strong>Servidor propio</strong> en España, donde funciona la aplicación. La conexión llega cifrada de extremo a extremo a través de <strong>Tailscale</strong>, que no puede ver el contenido.</li>
+        <li><strong>Hostinger</strong>: alojamiento de esta web y envío de los emails de tu cuenta, en servidores de la Unión Europea.</li>
+        <li><strong>Brevo</strong> (Sendinblue SAS, Francia): newsletter.</li>
+        <li><strong>EmailJS</strong>: formulario de la lista de espera. Puede implicar transferencias fuera del Espacio Económico Europeo, con las garantías previstas en el RGPD.</li>
+        <li><strong>Cloudflare Turnstile</strong>: protección del formulario de la newsletter frente a bots.</li>
+      </ul>
+      <p>No vendemos ni cedemos tus datos a nadie.</p>
 
       <h3>Cuánto tiempo los guardamos</h3>
-      <p>Hasta que retires tu consentimiento o pidas la baja. Los emails que nos envíes, el tiempo necesario para responderte y, como máximo, un año.</p>
-
-      <h3>Con quién los compartimos</h3>
-      <p>No vendemos ni cedemos tus datos. Usamos estos proveedores, que los tratan por cuenta nuestra:</p>
       <ul>
-        <li><strong>Brevo</strong> (Sendinblue SAS, Francia): envío de la newsletter.</li>
-        <li><strong>EmailJS</strong>: envío del formulario de la lista de espera. Puede implicar transferencias fuera del Espacio Económico Europeo con las garantías previstas en el RGPD.</li>
-        <li><strong>Cloudflare Turnstile</strong>: protección del formulario de la newsletter frente a bots.</li>
+        <li><strong>Cuenta, perfil, seguimiento y menús:</strong> mientras tengas cuenta. Si la borras (botón «Borrar mi cuenta»), se borra todo en ese momento. Las cuentas sin actividad durante <strong>24 meses</strong> se borran automáticamente.</li>
+        <li><strong>Facturación:</strong> el tiempo que obliga la ley (normalmente 6 años), sin datos de salud.</li>
+        <li><strong>Lista de espera y newsletter:</strong> hasta que te des de baja.</li>
+        <li><strong>Emails que nos envíes:</strong> el tiempo necesario para responderte y, como máximo, un año.</li>
       </ul>
 
       <h3>Tus derechos</h3>
-      <p>Puedes pedir el acceso, la rectificación, la supresión, la oposición, la limitación o la portabilidad de tus datos, y retirar tu consentimiento en cualquier momento, escribiendo a <a href="mailto:ana.dnutricion@gmail.com">ana.dnutricion@gmail.com</a>. Si crees que no hemos atendido bien tu solicitud, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+      <p>Puedes pedir el acceso, la rectificación, la supresión, la oposición, la limitación o la portabilidad de tus datos, y retirar tu consentimiento en cualquier momento, escribiendo a <a href="mailto:ana.dnutricion@gmail.com">ana.dnutricion@gmail.com</a>. Desde tu cuenta también puedes <strong>descargar todos tus datos</strong> y <strong>borrar tu cuenta</strong>. Si retiras el consentimiento para los datos de salud, no podremos seguir preparando tu plan. Si crees que no hemos atendido bien tu solicitud, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+
+      <h3>Menores</h3>
+      <p>Nuvida es solo para mayores de 18 años. Si detectamos una cuenta de una persona menor, la borramos.</p>
+
+      <h3>Seguridad</h3>
+      <p>Contraseñas guardadas con cifrado irreversible, conexiones cifradas, acceso a los datos solo para quien lo necesita, enlaces de acceso de un solo uso y copias de seguridad en la Unión Europea.</p>
 
       <!-- COOKIES -->
       <h2 id="cookies">Política de cookies</h2>
       <p>Esta web <strong>no usa cookies de analítica ni de publicidad</strong>, por eso no te pedimos que las aceptes.</p>
       <p>Algunos servicios técnicos necesarios pueden guardar información en tu navegador:</p>
       <ul>
+        <li><strong>Tu cuenta:</strong> si entras en tu cuenta, guardamos en tu navegador (almacenamiento local) un identificador de sesión para que no tengas que entrar cada vez. Es técnico y necesario para el servicio que pides. Se borra al pulsar «Salir».</li>
         <li><strong>Cloudflare Turnstile</strong>, solo en el blog, donde está el formulario de la newsletter, para comprobar que no eres un bot.</li>
         <li><strong>Google Fonts</strong>: las tipografías se cargan desde servidores de Google, que reciben tu dirección IP.</li>
       </ul>
       <p>Si en el futuro añadimos cookies que no sean técnicas, te pediremos permiso antes y actualizaremos esta página.</p>
+
+      <!-- CONDICIONES -->
+      <h2 id="condiciones">Condiciones de contratación</h2>
+      <ol>
+        <li><strong>Qué es Nuvida.</strong> Un programa online de alimentación saludable para <strong>personas adultas sanas</strong>: objetivos calculados, menús semanales con recetas, lista de la compra y seguimiento. <strong>No es una consulta médica ni dietética, ni trata enfermedades</strong>, y no sustituye a un profesional sanitario. Los planes con revisión incluyen la revisión, sin consulta, de una dietista-nutricionista.</li>
+        <li><strong>Quién puede contratarlo.</strong> Mayores de 18 años que respondan que no a las preguntas de salud. Si tu caso necesita consulta, te lo diremos y no se cobrará nada.</li>
+        <li><strong>Planes y precios.</strong> Los de esta web en el momento de contratar, con el <strong>IVA (21 %) incluido</strong>.</li>
+        <li><strong>Plazas por grupos.</strong> Algunos planes se abren por grupos con plazas limitadas y fecha de inicio. Reservar plaza no supone pagar hasta que te lo pidamos.</li>
+        <li><strong>Pago y duración.</strong> El Plan 4 semanas es un pago único. Coach, Coach + Ana y Premium son mensuales. Mientras no haya pago online, te escribimos para cobrar por transferencia o Bizum, y activamos tu plan al recibirlo.</li>
+        <li><strong>Cancelación.</strong> Los planes mensuales se cancelan cuando quieras, desde tu cuenta o escribiéndonos. Se mantienen hasta el final del periodo pagado y no se renuevan.</li>
+        <li><strong>Derecho de desistimiento.</strong> Tienes 14 días naturales desde la contratación para desistir sin dar explicaciones. Si nos pides que el servicio empiece antes de que acaben esos 14 días (por ejemplo, recibir ya tu primer menú) y luego desistes, te devolvemos el importe menos la parte proporcional del servicio ya prestado (art. 108 del texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios).</li>
+        <li><strong>Tu parte.</strong> Dar datos veraces, avisarnos si cambia tu salud (embarazo, enfermedad, medicación) y consultar a un profesional ante cualquier síntoma.</li>
+        <li><strong>Responsabilidad.</strong> Las cantidades y las calorías son orientativas. Revisa siempre las etiquetas si tienes alergias o intolerancias: comprobamos los ingredientes de cada receta, pero no podemos controlar la composición de cada marca comercial. Cuando un ingrediente solo es apto en ciertas marcas, te lo indicamos en tu menú y en tu lista de la compra.</li>
+        <li><strong>Cambios en estas condiciones.</strong> Te avisaremos por email con antelación. Si no estás de acuerdo, puedes cancelar.</li>
+        <li><strong>Ley y reclamaciones.</strong> Se aplica la ley española. Ante cualquier queja, escríbenos primero. Como persona consumidora, puedes acudir a los tribunales de tu domicilio y a las juntas arbitrales de consumo.</li>
+      </ol>
     </div>
   </main>
 
@@ -113,6 +155,7 @@
           <a href="legal.html#aviso-legal">Aviso legal</a>
           <a href="legal.html#privacidad">Privacidad</a>
           <a href="legal.html#cookies">Cookies</a>
+          <a href="legal.html#condiciones">Condiciones</a>
         </nav>
       </div>
     </div>

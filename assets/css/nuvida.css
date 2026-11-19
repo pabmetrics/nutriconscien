@@ -211,3 +211,8 @@ body { font-family: var(--font-body); }
 /* Aviso de cupo bajo el título de planes */
 .ncupo { display: flex; align-items: center; gap: 14px; max-width: 620px; margin: 20px auto 0; padding: 12px 18px; border-radius: var(--radius); background: var(--color-accent-light); font-size: 0.88rem; color: var(--color-text); text-align: left; }
 .ncupo .ngroups__dot { flex-shrink: 0; margin: 0 4px; }
+
+/* Tablas largas de la página legal: se desplazan dentro de su caja en el móvil */
+.legal-page table { display: block; overflow-x: auto; max-width: 100%; }
+.legal-page td, .legal-page th { min-width: 120px; vertical-align: top; }
+.legal-page { overflow-wrap: anywhere; }
