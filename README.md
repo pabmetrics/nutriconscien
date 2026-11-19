@@ -45,7 +45,7 @@ python -m scripts.exportar_recetario      # base de datos → recetario/ (commit
 python -m scripts.generar_web_recetas     # recetario/ → páginas de esta web (commit aquí)
 ```
 
-Cuando haya recetas publicadas, añadir «Recetas» al menú y al pie.
+«Recetas» está en el menú y el pie desde el 19/11 (108 recetas publicadas).
 
 ## Publicar en Hostinger (nuvida.es)
 
