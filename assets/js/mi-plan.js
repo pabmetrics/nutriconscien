@@ -51,7 +51,7 @@
       ? `Tu plan: ${yo.plan.nombre} · ${yo.plan.cancelado ? 'cancelado, sigue activo hasta el' : 'activo hasta el'} ${fecha(yo.plan.periodo_fin)}` : '';
     const partes = [tarjetaObjetivos()];
     if (!yo.perfil.derivar) {
-      if (yo.plan) partes.push('<div id="menuZona"><div class="tarjeta"><p>Cargando tu menú…</p></div></div>', tarjetaCheckin());
+      if (yo.plan) partes.push('<div id="menuZona"><div class="tarjeta"><p>Cargando tu menú…</p></div></div>', tarjetaCheckin(), tarjetaChat());
       else if (yo.pendiente) partes.push(tarjetaPendiente());
       else partes.push('<div id="planesZona" class="tarjeta"><p>Cargando planes…</p></div>');
     }
@@ -59,7 +59,7 @@
     contenido.innerHTML = partes.join('');
     enlazarCuenta();
     if (yo.perfil.derivar) return;
-    if (yo.plan) { await pintarMenu(); enlazarCheckin(); } else if (!yo.pendiente) await pintarPlanes();
+    if (yo.plan) { enlazarChat(); await pintarMenu(); enlazarCheckin(); } else if (!yo.pendiente) await pintarPlanes();
   }
 
   // ── Objetivos ──────────────────────────────────────────────────────────────
@@ -275,6 +275,25 @@
         aviso('¡Guardado! Lo tendremos en cuenta para tu próximo menú.', 'ok');
       }, form.querySelector('[type=submit]'));
     });
+  }
+
+  // ── Chat de dudas (Telegram) ────────────────────────────────────────────────
+  function tarjetaChat() {
+    if (!window.NUVIDA?.chatDudas) return '';
+    return `<div class="tarjeta" id="chatZona"><h2>Chat de dudas</h2>
+      <p>Pregunta por Telegram tus dudas generales sobre el programa, los menús y las recetas. Responde un asistente con
+        inteligencia artificial, solo con la documentación de Ana. No ve tu cuenta ni guarda la conversación:
+        no le escribas datos personales ni de salud. Para tu caso concreto, escríbele a Ana.</p>
+      <div class="acciones"><button class="btn btn--outline" type="button" id="chatEnlace">Usar el chat en Telegram</button></div></div>`;
+  }
+  function enlazarChat() {
+    const b = $('#chatEnlace');
+    if (!b) return;
+    b.addEventListener('click', () => accion(async () => {
+      const r = await pedir('/yo/chat-dudas', { metodo: 'POST' });
+      $('#chatZona .acciones').innerHTML = `<a class="btn btn--primary" href="${esc(r.enlace)}" target="_blank" rel="noopener">Abrir Telegram</a>
+        <small class="aviso-legal">El enlace sirve una vez y caduca en ${r.caduca_minutos} minutos. Tendrás acceso hasta el ${fecha(r.acceso_hasta)}.</small>`;
+    }, b));
   }
 
   // ── Mi cuenta ──────────────────────────────────────────────────────────────

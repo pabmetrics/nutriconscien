@@ -8,4 +8,5 @@ window.NUVIDA = {
   // Interruptores: se encienden cuando estén aprobados los textos legales (datos de salud).
   registroAbierto: false,   // muestra «Mi cuenta» en el menú y deja crear cuentas (la API también tiene su interruptor)
   listaEsperaEnApi: false,  // la lista de espera se guarda en la API en vez de enviarse por EmailJS
+  chatDudas: false,         // tarjeta «Chat de dudas» (Telegram) en Mi plan: cuando estén la FAQ de Ana y los textos legales
 };
