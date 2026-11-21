@@ -10,10 +10,10 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteRule (^|/)\.(?!well-known/) - [F,L]
 RewriteRule ^README\.md$ - [F,L]
 
-# Páginas antiguas (versiones previas de la portada): a la portada actual
 # /recetas/ (carpeta sin índice) → índice de recetas
 RewriteRule ^recetas/?$ /recetas.html [R=301,L]
 
+# Páginas antiguas (versiones previas de la portada): a la portada actual
 RewriteRule ^(index-nuvona|index-v1-backup|index-nutriconscien-backup|landing-v[0-9]+)\.html$ / [R=301,L]
 
 <IfModule mod_headers.c>
