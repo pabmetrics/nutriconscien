@@ -19,6 +19,7 @@ createServer(async (req, res) => {
   let ruta;
   try { ruta = decodeURIComponent(new URL(req.url, 'http://x').pathname); } catch { res.writeHead(400); return res.end(); }
   if (ANTIGUAS.test(ruta)) { res.writeHead(301, { Location: '/', ...SEGURIDAD }); return res.end(); }
+  if (/^\/recetas\/?$/.test(ruta)) { res.writeHead(301, { Location: '/recetas.html', ...SEGURIDAD }); return res.end(); }
   if (ruta.endsWith('/')) ruta += 'index.html';
   const fichero = normalize(join(RAIZ, ruta));
   if (!fichero.startsWith(RAIZ) || /\/\./.test(ruta)) { res.writeHead(403, SEGURIDAD); return res.end(); }
