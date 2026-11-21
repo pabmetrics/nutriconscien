@@ -1,0 +1,12 @@
+{
+  "name": "nuvida-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web de Nuvida (estática). Hostinger: build = npm run build, salida = dist; si pide servidor, start = npm start.",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node scripts/construir.mjs",
+    "start": "node scripts/servidor.mjs"
+  }
+}

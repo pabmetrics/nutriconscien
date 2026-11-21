@@ -49,6 +49,14 @@ python -m scripts.generar_web_recetas     # recetario/ → páginas de esta web 
 
 ## Publicar en Hostinger (nuvida.es)
 
+**Opción A: conectar GitHub como aplicación Node.js** (lo que ofrece hPanel al conectar GitHub).
+No hay nada que compilar: `npm run build` (`scripts/construir.mjs`, sin dependencias) copia en `dist/` solo lo
+público (sin README, scripts ni portadas antiguas). Configuración: comando de instalación `npm install`, de
+construcción `npm run build`, directorio de salida `dist`. Si pide comando de arranque: `npm start`
+(`scripts/servidor.mjs`, con las mismas reglas que el `.htaccess`). Node 18 o superior.
+
+**Opción B: despliegue por Git clásico** (Avanzado → GIT), si el plan lo tiene:
+
 La web se publica tal cual desde este repo (sin compilar nada) con el despliegue por Git de Hostinger:
 
 1. hPanel → **Sitios web** → `nuvida.es` → **Administrador de archivos**: vaciar `public_html` (Hostinger pone una página por defecto).
